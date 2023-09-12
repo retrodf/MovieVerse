@@ -1,0 +1,127 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="53CAAADC-F9F2-537C-6708-38870B643F9E" name="JOB_HISTORY">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:57:46 UTC</createdTime>
+<generatorID>878CD0E6-9E23-7872-6325-440E95DB2E8F</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="start_date" id="067D5B62-6E18-2920-7CEA-E39DC19B9FD0">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:57:46 UTC</createdTime>
+<generatorID>DE1102A2-4C38-AE86-2F00-0EF195E37310</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="end_date" id="311E7EF8-7CB9-1580-C1EE-88AA150DD343">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:57:46 UTC</createdTime>
+<generatorID>33E546E5-C483-1C05-1333-87CC14CC7993</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="JOBS_job_id" id="53663AFB-BB0F-4727-1110-BAE43CCE92B3">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:57:46 UTC</createdTime>
+<generatorID>8F225643-02EB-5CD0-DAB3-3B51E844E073</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F34FFA80-21A7-D39C-43C3-C6AD3CFE0415" referredColumn="39B36F3B-1D4B-E94E-14CA-E628C03273B8"/>
+</associations>
+</Column>
+<Column name="EMPLOYEES_employee_id" id="222C96ED-E13E-C9F9-FE18-DDF9DADBAF0F">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:57:46 UTC</createdTime>
+<generatorID>71A8177B-3368-495F-1656-48AAB2A86225</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B80F486C-ED3E-0A3C-B4FD-2EF1E91C2108" referredColumn="88194E14-483A-A51F-A300-B4B80B578008"/>
+</associations>
+</Column>
+<Column name="DEPARTMENTS_department_id" id="AFC5B63D-469D-1E4C-0C0B-479B3442BC13">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:57:46 UTC</createdTime>
+<generatorID>6AFF91DF-D2A2-2A68-FC0B-C5ED8D52BFC4</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3997A9EA-A852-6153-07C3-0739AE37FCE1" referredColumn="1DD81951-D24A-A53C-6168-2661527209BF"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="9DF84924-DA5C-13E2-39F3-B78985329635" name="JOB_HISTORY_PK">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:57:46 UTC</createdTime>
+<generatorID>53EF6A96-7FB5-EB1B-F6AA-E3706A211402</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="067D5B62-6E18-2920-7CEA-E39DC19B9FD0"/>
+<colUsage columnID="222C96ED-E13E-C9F9-FE18-DDF9DADBAF0F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1B8204CC-3E08-8666-928B-1D07F36C4A7B" name="JOB_HISTORY_DEPARTMENTS_FK">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:57:47 UTC</createdTime>
+<generatorID>5D83E153-3895-B612-96BB-D17C389A5152</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AFC5B63D-469D-1E4C-0C0B-479B3442BC13"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="97AFC9C2-1AF5-4719-29B1-C7FE132726FE" name="JOB_HISTORY_EMPLOYEES_FK">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:57:47 UTC</createdTime>
+<generatorID>C21B0989-D7A4-88CD-0D06-C060D59D98DA</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="222C96ED-E13E-C9F9-FE18-DDF9DADBAF0F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6B67262D-C01E-600D-99B8-99F115DEB827" name="JOB_HISTORY_JOBS_FK">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:57:47 UTC</createdTime>
+<generatorID>9CB25379-43AB-B99E-16A5-EA937D4AA954</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="53663AFB-BB0F-4727-1110-BAE43CCE92B3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

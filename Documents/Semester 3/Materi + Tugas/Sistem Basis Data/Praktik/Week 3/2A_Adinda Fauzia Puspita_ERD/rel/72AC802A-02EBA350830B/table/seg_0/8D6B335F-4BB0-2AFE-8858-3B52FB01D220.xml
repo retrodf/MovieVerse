@@ -1,0 +1,49 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8D6B335F-4BB0-2AFE-8858-3B52FB01D220" name="REGIONS">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:57:46 UTC</createdTime>
+<generatorID>3CD4974A-6924-1E90-B789-7243F6163033</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="region_id" id="D245EF59-BB68-14C6-5460-BDB64AA82579">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:57:46 UTC</createdTime>
+<generatorID>941BBCB8-EB80-35B9-3EBB-B11D2A3F8D87</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="region_name" id="ED938E1D-FF98-DDDC-1BDB-A4F0A5744CEB">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:57:46 UTC</createdTime>
+<generatorID>D64A87BF-D402-FC4A-0974-58D009036D16</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="674EC8DC-F055-4C9F-7FD4-02D37BF3B870" name="REGIONS_PK">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:57:46 UTC</createdTime>
+<generatorID>23E04E0A-9397-C3FC-316F-3BEB25051C2E</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D245EF59-BB68-14C6-5460-BDB64AA82579"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

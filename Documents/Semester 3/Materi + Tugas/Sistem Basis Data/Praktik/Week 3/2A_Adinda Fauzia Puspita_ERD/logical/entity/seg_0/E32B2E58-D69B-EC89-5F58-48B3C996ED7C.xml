@@ -1,0 +1,73 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="E32B2E58-D69B-EC89-5F58-48B3C996ED7C" name="COUNTRIES">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 12:50:14 UTC</createdTime>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<engineerTo>
+<item key="72AC802A-CD2D-5E20-3FAF-02EBA350830B" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="country_id" id="4080B307-48BF-63B7-F893-23A480BC6728">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 12:50:27 UTC</createdTime>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<engineerTo>
+<item key="72AC802A-CD2D-5E20-3FAF-02EBA350830B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="country_name" id="0D65FCEB-B5C2-D2CC-7A76-A8E5527DF153">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 12:50:44 UTC</createdTime>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<engineerTo>
+<item key="72AC802A-CD2D-5E20-3FAF-02EBA350830B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="region_id" id="B29B9A60-9741-20B7-2C47-3DE91D9FA651">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:43:30 UTC</createdTime>
+<generatorID>5954ACF4-E5E2-4854-2314-AC8746BD311D</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<engineerTo>
+<item key="72AC802A-CD2D-5E20-3FAF-02EBA350830B" value="true"/>
+</engineerTo>
+<referedAttribute>941BBCB8-EB80-35B9-3EBB-B11D2A3F8D87</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="78BBB66F-A19C-82AE-90D5-13776DA1F251" name="COUNTRIES PK">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 12:50:43 UTC</createdTime>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="72AC802A-CD2D-5E20-3FAF-02EBA350830B" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>4080B307-48BF-63B7-F893-23A480BC6728</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="MANAGER DEPARTMENT" directorySegmentName="seg_0" id="5F7B170F-E787-C319-A1B9-EA8695DBCDB0">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:41:21 UTC</createdTime>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<engineerTo>
+<item key="72AC802A-CD2D-5E20-3FAF-02EBA350830B" value="true"/>
+</engineerTo>
+<sourcePk>8C682600-5BC2-C935-52A7-A50C9B0ED6DF</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>293FE5D8-2337-DF79-74F8-3848BD9D660F</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>2A27B2AD-00C4-533C-B7A8-A9BDD314EED8</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

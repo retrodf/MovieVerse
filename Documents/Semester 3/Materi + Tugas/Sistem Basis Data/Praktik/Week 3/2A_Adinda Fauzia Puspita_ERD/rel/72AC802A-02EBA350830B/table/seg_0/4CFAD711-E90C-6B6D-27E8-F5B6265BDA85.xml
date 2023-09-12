@@ -1,0 +1,75 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="4CFAD711-E90C-6B6D-27E8-F5B6265BDA85" name="COUNTRIES">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:57:46 UTC</createdTime>
+<generatorID>E32B2E58-D69B-EC89-5F58-48B3C996ED7C</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="country_id" id="EA837C90-0A0B-A80B-0DB7-CE7404736C10">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:57:46 UTC</createdTime>
+<generatorID>4080B307-48BF-63B7-F893-23A480BC6728</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="country_name" id="784FA0F5-AE7F-AAFF-A8B2-B8C940CF1194">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:57:46 UTC</createdTime>
+<generatorID>0D65FCEB-B5C2-D2CC-7A76-A8E5527DF153</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="REGIONS_region_id" id="D7C8EC9C-496F-BC3A-3204-56CB7AE8485E">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:57:46 UTC</createdTime>
+<generatorID>B29B9A60-9741-20B7-2C47-3DE91D9FA651</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="82178B17-D97E-6BC2-1856-0BEC911D83E0" referredColumn="D245EF59-BB68-14C6-5460-BDB64AA82579"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="EB1F9B1E-1AF7-EDE6-F62E-CA4B7F5DDF96" name="COUNTRIES_PK">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:57:46 UTC</createdTime>
+<generatorID>78BBB66F-A19C-82AE-90D5-13776DA1F251</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EA837C90-0A0B-A80B-0DB7-CE7404736C10"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="AB1D6435-F2B3-EA35-EDA7-2F9EB454D26C" name="COUNTRIES_REGIONS_FK">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:57:47 UTC</createdTime>
+<generatorID>5954ACF4-E5E2-4854-2314-AC8746BD311D</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D7C8EC9C-496F-BC3A-3204-56CB7AE8485E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

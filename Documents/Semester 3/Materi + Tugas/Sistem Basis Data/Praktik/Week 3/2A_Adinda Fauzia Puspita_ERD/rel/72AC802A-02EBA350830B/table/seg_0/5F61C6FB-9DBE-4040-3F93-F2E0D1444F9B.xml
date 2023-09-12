@@ -1,0 +1,45 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="5F61C6FB-9DBE-4040-3F93-F2E0D1444F9B" name="JOB_GRADES">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:57:46 UTC</createdTime>
+<generatorID>19D0CCA3-8132-CC0E-5480-05586C9CA99C</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="grade_level" id="61E94AB5-7F86-25C3-72F6-F2E1902BAF7A">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:57:46 UTC</createdTime>
+<generatorID>BF6E5A31-A7A1-E3CD-DACD-97FAB59754AA</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="lowest_sal" id="704AFE8C-5FB0-13AF-8824-0D38B4949F74">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:57:46 UTC</createdTime>
+<generatorID>C4FE324E-D9CF-410B-7116-5DF23FE2A1CC</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="highest_sal" id="3320F505-2C6F-7256-4E7A-FD85A7196850">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:57:46 UTC</createdTime>
+<generatorID>E38136B6-59FA-AD3F-485F-45D2E3D07F61</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+</Table>

@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="2A_Adinda Fauzia Puspita_ERD" id="BF8A0C43-32CD-B577-278B-AC8435A4DB6E" version="3.5">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 12:42:38 UTC</createdTime>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>BF8A0C43-32CD-B577-278B-AC8435A4DB6E</designId>
+</OSDM_Design>

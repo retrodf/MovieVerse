@@ -1,0 +1,101 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="77450540-4650-59B4-275E-185C3C54D7E0" name="DEPARTMENTS">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:57:46 UTC</createdTime>
+<generatorID>2A27B2AD-00C4-533C-B7A8-A9BDD314EED8</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="department_id" id="1DD81951-D24A-A53C-6168-2661527209BF">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:57:46 UTC</createdTime>
+<generatorID>6A06EDE2-4AF8-FDD0-24B2-5C81A2E3F75D</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="department_name" id="B4DA2B5C-7783-BCAE-3779-910A32C287D7">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:57:46 UTC</createdTime>
+<generatorID>FCD52D3B-7D75-A5D8-32DF-42E76FEFCA7A</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40</dataTypeSize>
+<ownDataTypeParameters>40,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="manager_id" id="DD0F07D0-54D0-6C2B-B54D-512179FDDFC6">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:57:46 UTC</createdTime>
+<generatorID>DB03903E-21F9-CB0B-F492-0B493D5AE36B</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E8FCC022-12EC-4545-E715-40D9FF0A53D5" referredColumn="88194E14-483A-A51F-A300-B4B80B578008"/>
+</associations>
+</Column>
+<Column name="LOCATIONS_location_id" id="4AE0D89A-F33C-14C2-7D58-F1A89916A8FD">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:57:46 UTC</createdTime>
+<generatorID>EA08F2AC-D9F0-7F32-657F-5843D0F78982</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5DF6FAAA-9879-64AC-C77F-0D2CD1C2BD5D" referredColumn="5953599E-4CE0-99BA-9093-1F05E3DE4727"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="1EB9E1D2-1B3D-A510-079E-7CD760445ABB" name="DEPARTMENTS_PK">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:57:46 UTC</createdTime>
+<generatorID>8CAC8C9E-C128-6B99-4476-F643F89F9B68</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1DD81951-D24A-A53C-6168-2661527209BF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1E01D511-4F42-0BC9-3D1D-51C2EDE272DC" name="DEPARTMENTS_LOCATIONS_FK">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:57:47 UTC</createdTime>
+<generatorID>FB514A82-7920-BEA8-67D2-18B39F46C4A9</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4AE0D89A-F33C-14C2-7D58-F1A89916A8FD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="41A69662-7B2B-7474-A760-056102C10499" name="DEPARTMENTS_EMPLOYEES_FK">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:57:47 UTC</createdTime>
+<generatorID>5F7B170F-E787-C319-A1B9-EA8695DBCDB0</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DD0F07D0-54D0-6C2B-B54D-512179FDDFC6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

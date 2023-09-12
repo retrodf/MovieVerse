@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="COUNTRY REGION" directorySegmentName="seg_0" id="5954ACF4-E5E2-4854-2314-AC8746BD311D">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:43:30 UTC</createdTime>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<engineerTo>
+<item key="72AC802A-CD2D-5E20-3FAF-02EBA350830B" value="true"/>
+</engineerTo>
+<sourcePk>23E04E0A-9397-C3FC-316F-3BEB25051C2E</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>3CD4974A-6924-1E90-B789-7243F6163033</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>E32B2E58-D69B-EC89-5F58-48B3C996ED7C</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

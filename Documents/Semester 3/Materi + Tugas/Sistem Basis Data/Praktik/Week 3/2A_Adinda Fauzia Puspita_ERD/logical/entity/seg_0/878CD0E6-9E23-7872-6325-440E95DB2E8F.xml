@@ -1,0 +1,101 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="878CD0E6-9E23-7872-6325-440E95DB2E8F" name="JOB_HISTORY">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 12:54:56 UTC</createdTime>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<engineerTo>
+<item key="72AC802A-CD2D-5E20-3FAF-02EBA350830B" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="start_date" id="DE1102A2-4C38-AE86-2F00-0EF195E37310">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 12:55:18 UTC</createdTime>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<engineerTo>
+<item key="72AC802A-CD2D-5E20-3FAF-02EBA350830B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="end_date" id="33E546E5-C483-1C05-1333-87CC14CC7993">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 12:55:43 UTC</createdTime>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<engineerTo>
+<item key="72AC802A-CD2D-5E20-3FAF-02EBA350830B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="job_id" id="8F225643-02EB-5CD0-DAB3-3B51E844E073">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:45:06 UTC</createdTime>
+<generatorID>9CB25379-43AB-B99E-16A5-EA937D4AA954</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<engineerTo>
+<item key="72AC802A-CD2D-5E20-3FAF-02EBA350830B" value="true"/>
+</engineerTo>
+<referedAttribute>FB711D19-1908-DE28-43BF-72B2B9A2BFF0</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="employee_id" id="71A8177B-3368-495F-1656-48AAB2A86225">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:45:33 UTC</createdTime>
+<generatorID>C21B0989-D7A4-88CD-0D06-C060D59D98DA</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<engineerTo>
+<item key="72AC802A-CD2D-5E20-3FAF-02EBA350830B" value="true"/>
+</engineerTo>
+<referedAttribute>76D1A786-617F-38E0-B246-2EED92B33420</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="department_id" id="6AFF91DF-D2A2-2A68-FC0B-C5ED8D52BFC4">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 13:45:51 UTC</createdTime>
+<generatorID>5D83E153-3895-B612-96BB-D17C389A5152</generatorID>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<engineerTo>
+<item key="72AC802A-CD2D-5E20-3FAF-02EBA350830B" value="true"/>
+</engineerTo>
+<referedAttribute>6A06EDE2-4AF8-FDD0-24B2-5C81A2E3F75D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="53EF6A96-7FB5-EB1B-F6AA-E3706A211402" name="JOB_HISTORY PK">
+<createdBy>Adinda Fauzia P</createdBy>
+<createdTime>2023-09-12 12:55:17 UTC</createdTime>
+<ownerDesignName>2A_Adinda Fauzia Puspita_ERD</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="72AC802A-CD2D-5E20-3FAF-02EBA350830B" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>DE1102A2-4C38-AE86-2F00-0EF195E37310</attributeRef>
+<attributeRef>71A8177B-3368-495F-1656-48AAB2A86225</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
