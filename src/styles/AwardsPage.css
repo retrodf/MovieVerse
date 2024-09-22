@@ -1,0 +1,32 @@
+/* Tambahkan padding ke container utama */
+.award-page-container {
+  padding: 100px 80px; /* Atur padding atas-bawah 20px, kiri-kanan 50px */
+}
+
+/* Untuk memastikan gambar poster film memiliki margin yang seragam */
+.movie-list {
+  display: flex;
+  overflow-x: auto;
+  padding: 20px 0; /* Beri ruang lebih pada bagian atas dan bawah */
+  gap: 20px; /* Spasi antar poster film */
+}
+
+.movie-item {
+  min-width: 200px;
+  margin-right: 20px; /* Spasi antar item */
+}
+
+.movie-item img {
+  border-radius: 10px;
+}
+
+/* Untuk heading atau judul setiap kategori */
+.category-section {
+  padding-bottom: 20px;
+}
+
+/* Untuk margin judul utama */
+h3 {
+  padding: 20px 0;
+  margin-bottom: 40px;
+}

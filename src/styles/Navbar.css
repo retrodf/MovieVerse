@@ -1,0 +1,197 @@
+.navbar {
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.navbar-active {
+  color: #f00;
+  background-color: #f00;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .nav-link {
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.navbar .nav-link.active {
+  color: #f00;
+}
+
+/* Mengatur agar tinggi elemen seragam dan rapi */
+.search-group {
+  max-width: 500px;
+  display: flex;
+  height: 38px; /* Tinggi yang seragam untuk seluruh grup */
+  border-radius: 50px;
+  overflow: hidden; /* Agar border radius berlaku secara menyeluruh */
+}
+
+/* Dropdown button styling */
+.category-dropdown {
+  border-top-left-radius: 25px; /* Perbaikan typo: '2A5px' menjadi '25px' */
+  border-bottom-left-radius: 25px;
+  border: 1px solid #ff0000;
+  height: 100%; /* Sesuaikan tinggi dropdown agar sesuai dengan input */
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  background-color: #fff; /* Tambahkan latar belakang agar terlihat lebih jelas */
+}
+
+/* Search input styling */
+.search-input {
+  border: 1px solid #ff0000;
+  border-left: none; /* Hilangkan border kiri agar menyatu dengan dropdown */
+  border-right: none; /* Hilangkan border kanan agar menyatu dengan tombol search */
+  height: 100%; /* Sesuaikan tinggi input agar sesuai dengan dropdown */
+  padding-left: 10px;
+  border-radius: 0; /* Agar menyatu dengan tombol di kiri dan kanan */
+  outline: none;
+}
+
+/* Search button styling */
+.search-button {
+  background-color: #ff0000;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border: 1px solid #ff0000;
+  border-left: none;
+  height: 100%; /* Sesuaikan tinggi tombol agar sesuai dengan input */
+  padding: 0 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.search-button i {
+  font-size: 16px; /* Sesuaikan ukuran ikon pencarian */
+}
+
+/* Menyelaraskan tinggi dropdown */
+.input-group .dropdown-toggle {
+  border-radius: 0;
+  border: none;
+  padding: 0 15px;
+  height: 100%; /* Samakan tinggi dengan input dan button */
+  display: flex;
+  align-items: center;
+}
+
+.input-group .dropdown-menu {
+  border-radius: 0;
+}
+
+.input-group .dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+
+.profile-icon {
+  font-size: 1.5rem;
+}
+
+.profile-dropdown .dropdown-item {
+  color: #000;
+}
+
+.profile-dropdown .dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+
+.movie-list::-webkit-scrollbar {
+  display: none;
+}
+
+.movie-item {
+  position: relative;
+  display: inline-block;
+  min-width: 250px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #333;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.movie-poster {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.movie-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  opacity: 0;
+  transform: translateY(100%);
+  /* Start from below */
+  transition:
+    opacity 0.3s ease-in-out,
+    transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  text-align: center;
+  border-radius: 8px;
+  height: 100%;
+  pointer-events: none;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.movie-item:hover .movie-info {
+  opacity: 1;
+  transform: translateY(0);
+  /* Move to its final position */
+}
+
+.rating-container {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.rating-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 5px solid #ccc;
+  /* Default border color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background: #333;
+}
+
+.rating-text {
+  position: absolute;
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.logo-container {
+  max-height: 100px;
+  /* Prevents the logo from increasing the navbar's height */
+}
+
+.logo-img {
+  height: 120px;
+  /* Makes the logo larger */
+  object-fit: contain;
+  /* Ensures the logo fits within the space */
+}

@@ -1,0 +1,50 @@
+/* Styling untuk komponen selebriti */
+
+/* Hapus underline dan ubah warna teks */
+.celeb-link {
+    text-decoration: none;
+    color: #fff; /* Warna teks putih */
+  }
+  
+  /* Gaya wrapper untuk gambar dan nama selebriti */
+  .celeb-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px; /* Membuat sudut gambar melengkung */
+  }
+  
+  /* Styling untuk gambar */
+  .celeb-image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px; /* Membuat gambar melengkung */
+  }
+  
+  /* Styling untuk nama selebriti di bagian bawah gambar */
+  .celeb-name {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Warna latar belakang semi-transparan */
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 1rem;
+    text-transform: capitalize;
+  }
+  
+  /* Hover effect: Memberikan efek saat gambar dihover */
+  .celeb-link:hover .celeb-image-wrapper img {
+    transform: scale(1.05); /* Membesarkan sedikit saat hover */
+    transition: transform 0.3s ease;
+  }
+  
+  /* Untuk menghindari efek biru default pada link */
+  .celeb-link:focus,
+  .celeb-link:hover {
+    text-decoration: none;
+    color: white;
+  }
+  
