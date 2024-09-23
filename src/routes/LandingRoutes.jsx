@@ -11,6 +11,7 @@ import Profile from "../pages/Profile";
 import MoviesPage from "../pages/MoviesPage";
 import SeriesPage from "../pages/SeriesPage";
 import AwardsPage from "../pages/AwardsPage";
+import CelebsPage from "../pages/CelebsPage";
 
 function LandingRoutes() {
   return (
@@ -18,7 +19,8 @@ function LandingRoutes() {
       <Route path="/" element={<HomePage />} />
       <Route path="/movie/:id" element={<MovieDetail />} />
       <Route path="/series/:id" element={<SeriesDetail />} />
-      <Route path="/celeb/:id" element={<CelebsDetail />} />
+      <Route path="/celebs/:id" element={<CelebsDetail />} />
+      <Route path="/celebs" element={<CelebsPage />} />
       <Route path="/movies" element={<MoviesPage />} />
       <Route path="/series" element={<SeriesPage />} />
       <Route path="/awards" element={<AwardsPage />} />

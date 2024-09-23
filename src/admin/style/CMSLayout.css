@@ -10,36 +10,28 @@
     --navbar-color-text: #000000;
 }
 
-* {
-    margin: 0;
-    border: none;
-    outline: none;
-    list-style: none;
-    box-sizing: border-box;
-}
-
-.sidebarCMS {
-    color: var(--primary-color);
+.ant-layout-sider.sidebarCMS {
     height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #001529; /* Background untuk sidebar */
-    width: 250px;
-    transition: all 0.3s ease;
-    overflow-y: auto;
-}
+    background-color: #001529;
+    display: flex;  
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
 
-.logo {
+.logoCMS {
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--primary-color);
     padding: 10px;
-    background-color: #002140; /* Warna untuk logo background */
+    background-color: #001529; /* Warna untuk logo background */
 }
 
-.logo-icon {
+.logoCMS-icon {
     width: 40px;
     height: 40px;
     display: flex;
@@ -51,16 +43,15 @@
 }
 
 .menuCMS {
-    margin-top: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 7px;
     font-size: 1rem;
 }
 
 .menuCMS .ant-menu-item,
 .menuCMS .ant-menu-submenu-title {
-    padding: 10px 20px;
+    padding: 10px 10px;
     transition: background-color 0.3s ease;
 }
 
@@ -78,6 +69,12 @@
 .menuCMS .ant-menu-item-selected .anticon,
 .menuCMS .ant-menu-item-selected .ant-menu-title-content {
     color: #ffffff !important;
+}
+
+.contentCMS {
+    padding: 20px;
+    min-height: 100vh;
+    background-color: #f0f2f5; /* Background content */
 }
 
 .toggle-theme-btn {

@@ -3,8 +3,8 @@ import {FireFilled} from '@ant-design/icons';
 
 const Logo = () => {
   return (
-    <div className="logo">
-      <div className="logo-icon">
+    <div className="logoCMS">
+      <div className="logoCMS-icon">
         <FireFilled/>
       </div>
     </div>

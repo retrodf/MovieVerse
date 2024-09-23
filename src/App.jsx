@@ -23,8 +23,11 @@ function App() {
   return (
     <div style={{ backgroundColor: "black" }}>
       {showHeader && <NavbarComponent />}
-      {/* Memisahkan rute CMS dan LandingPage */}
-      {location.pathname.includes("/cms") ? <CMSRoutes /> : <LandingPageRoutes />}
+      {location.pathname.includes("/cms") ? (
+        <CMSRoutes />
+      ) : (
+        <LandingPageRoutes />
+      )}
       {showFooter && <FooterComponent />}
     </div>
   );
