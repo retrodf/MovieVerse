@@ -1,0 +1,680 @@
+<!doctype html>
+<html lang="en" id="dashboard" dir="ltr" data-bs-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono&display=swap" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="./style.min.css" />
+    <title>Forum Diskusi</title>
+  </head>
+  <body>
+    <div class="holder">
+      <div class="wrapper">
+        <div class="header">
+          <div class="header-holder">
+            <div class="header-container container-fluid g-5">
+              <div class="header-wrap">
+                <button class="btn btn-text-light btn-icon">
+                  <i class="fa fa-arrow-left"></i>
+                </button>
+              </div>
+              <div class="header-wrap header-wrap-block">
+                <h1 class="header-title">Forum Diskusi</h1>
+              </div>
+              <div class="header-wrap">
+                <button class="btn btn-text-light btn-icon">
+                  <i class="far fa-comment-alt"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="header-holder header-holder-offset">
+            <div class="header-container container-fluid g-5">
+              <div class="header-wrap header-wrap-block">
+                <div class="input-group">
+                  <span class="input-group-text" id="basic-addon1">
+                    <i class="fa fa-search"></i>
+                  </span>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Search"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="content">
+          <div class="container-fluid g-5">
+            <div class="portlet">
+              <div class="portlet-header">
+                <div class="nav nav-underline" id="tab">
+                  <a
+                    class="nav-item nav-link"
+                    id="category-tab"
+                    data-bs-toggle="tab"
+                    href="#category-page"
+                  >
+                    Kategori
+                  </a>
+                  <a
+                    class="nav-item nav-link active"
+                    id="popular-tab"
+                    data-bs-toggle="tab"
+                    href="#popular-page"
+                  >
+                    Topik Terpopuler
+                  </a>
+                  <a
+                    class="nav-item nav-link"
+                    id="newest-tab"
+                    data-bs-toggle="tab"
+                    href="#newest-page"
+                  >
+                    Topik Terkini
+                  </a>
+                </div>
+              </div>
+              <div class="portlet-body">
+                <div class="tab-content" id="tabContent">
+                  <div class="tab-pane fade" id="category-page">
+                    <div class="richlist richlist-action">
+                      <div class="richlist-item">
+                        <div class="richlist-prepend">
+                          <div class="avatar avatar-subtle-primary">
+                            <div class="avatar-display">
+                              <i class="fa fa-graduation-cap"></i>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="richlist-content">
+                          <h4 class="richlist-title">Pendidikan</h4>
+                          <span class="richlist-subtitle">
+                            Updated 19/10/2023
+                          </span>
+                        </div>
+                        <div class="richlist-append">
+                          <button class="btn">
+                            <i class="fa fa-chevron-up"></i>
+                          </button>
+                        </div>
+                        <div class="richlist-block">
+                          <i class="fa fa-lock"></i>
+                        </div>
+                      </div>
+
+                      <div class="richlist-item">
+                        <div class="richlist-prepend">
+                          <div class="avatar avatar-subtle-primary">
+                            <div class="avatar-display">
+                              <i class="fa fa-graduation-cap"></i>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="richlist-content">
+                          <h4 class="richlist-title">Pendidikan</h4>
+                          <span class="richlist-subtitle">
+                            Updated 19/10/2023
+                          </span>
+                        </div>
+                        <div class="richlist-append">
+                          <button class="btn">
+                            <i class="fa fa-chevron-up"></i>
+                          </button>
+                        </div>
+                        <div class="richlist-block">
+                          <i class="fa fa-lock"></i>
+                        </div>
+                      </div>
+
+                      <div class="richlist-item disabled">
+                        <div class="richlist-prepend">
+                          <div class="avatar avatar-subtle-primary">
+                            <div class="avatar-display">
+                              <i class="fa fa-graduation-cap"></i>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="richlist-content">
+                          <h4 class="richlist-title">Pendidikan</h4>
+                          <span class="richlist-subtitle">
+                            Updated 19/10/2023
+                          </span>
+                        </div>
+                        <div class="richlist-append">
+                          <button class="btn">
+                            <i class="fa fa-chevron-down"></i>
+                          </button>
+                        </div>
+                        <div class="richlist-block">
+                          <i class="fa fa-lock"></i>
+                        </div>
+                      </div>
+
+                      <div class="richlist-item disabled">
+                        <div class="richlist-prepend">
+                          <div class="avatar avatar-subtle-primary">
+                            <div class="avatar-display">
+                              <i class="fa fa-graduation-cap"></i>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="richlist-content">
+                          <h4 class="richlist-title">Pendidikan</h4>
+                          <span class="richlist-subtitle">
+                            Updated 19/10/2023
+                          </span>
+                        </div>
+                        <div class="richlist-append">
+                          <button class="btn">
+                            <i class="fa fa-chevron-down"></i>
+                          </button>
+                        </div>
+                        <div class="richlist-block">
+                          <i class="fa fa-lock"></i>
+                        </div>
+                      </div>
+
+                      <div class="richlist-item disabled">
+                        <div class="richlist-prepend">
+                          <div class="avatar avatar-subtle-primary">
+                            <div class="avatar-display">
+                              <i class="fa fa-graduation-cap"></i>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="richlist-content">
+                          <h4 class="richlist-title">Pendidikan</h4>
+                          <span class="richlist-subtitle">
+                            Updated 19/10/2023
+                          </span>
+                        </div>
+                        <div class="richlist-append">
+                          <button class="btn">
+                            <i class="fa fa-chevron-down"></i>
+                          </button>
+                        </div>
+                        <div class="richlist-block">
+                          <i class="fa fa-lock"></i>
+                        </div>
+                      </div>
+
+                      <div class="richlist-item disabled">
+                        <div class="richlist-prepend">
+                          <div class="avatar avatar-subtle-primary">
+                            <div class="avatar-display">
+                              <i class="fa fa-graduation-cap"></i>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="richlist-content">
+                          <h4 class="richlist-title">Pendidikan</h4>
+                          <span class="richlist-subtitle">
+                            Updated 19/10/2023
+                          </span>
+                        </div>
+                        <div class="richlist-append">
+                          <button class="btn">
+                            <i class="fa fa-chevron-down"></i>
+                          </button>
+                        </div>
+                        <div class="richlist-block">
+                          <i class="fa fa-lock"></i>
+                        </div>
+                      </div>
+
+                      <div class="richlist-item disabled">
+                        <div class="richlist-prepend">
+                          <div class="avatar avatar-subtle-primary">
+                            <div class="avatar-display">
+                              <i class="fa fa-graduation-cap"></i>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="richlist-content">
+                          <h4 class="richlist-title">Pendidikan</h4>
+                          <span class="richlist-subtitle">
+                            Updated 19/10/2023
+                          </span>
+                        </div>
+                        <div class="richlist-append">
+                          <button class="btn">
+                            <i class="fa fa-chevron-down"></i>
+                          </button>
+                        </div>
+                        <div class="richlist-block">
+                          <i class="fa fa-lock"></i>
+                        </div>
+                      </div>
+
+                      <div class="richlist-item disabled">
+                        <div class="richlist-prepend">
+                          <div class="avatar avatar-subtle-primary">
+                            <div class="avatar-display">
+                              <i class="fa fa-graduation-cap"></i>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="richlist-content">
+                          <h4 class="richlist-title">Pendidikan</h4>
+                          <span class="richlist-subtitle">
+                            Updated 19/10/2023
+                          </span>
+                        </div>
+                        <div class="richlist-append">
+                          <button class="btn">
+                            <i class="fa fa-chevron-down"></i>
+                          </button>
+                        </div>
+                        <div class="richlist-block">
+                          <i class="fa fa-lock"></i>
+                        </div>
+                      </div>
+
+                      <div class="richlist-item disabled">
+                        <div class="richlist-prepend">
+                          <div class="avatar avatar-subtle-primary">
+                            <div class="avatar-display">
+                              <i class="fa fa-graduation-cap"></i>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="richlist-content">
+                          <h4 class="richlist-title">Pendidikan</h4>
+                          <span class="richlist-subtitle">
+                            Updated 19/10/2023
+                          </span>
+                        </div>
+                        <div class="richlist-append">
+                          <button class="btn">
+                            <i class="fa fa-chevron-down"></i>
+                          </button>
+                        </div>
+                        <div class="richlist-block">
+                          <i class="fa fa-lock"></i>
+                        </div>
+                      </div>
+
+                      <div class="richlist-item disabled">
+                        <div class="richlist-prepend">
+                          <div class="avatar avatar-subtle-primary">
+                            <div class="avatar-display">
+                              <i class="fa fa-graduation-cap"></i>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="richlist-content">
+                          <h4 class="richlist-title">Pendidikan</h4>
+                          <span class="richlist-subtitle">
+                            Updated 19/10/2023
+                          </span>
+                        </div>
+                        <div class="richlist-append">
+                          <button class="btn">
+                            <i class="fa fa-chevron-down"></i>
+                          </button>
+                        </div>
+                        <div class="richlist-block">
+                          <i class="fa fa-lock"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade show active" id="popular-page">
+                    <div class="richlist">
+                      <div
+                        class="d-flex flex-column position-relative overflow-hidden rounded mb-3 disabled"
+                      >
+                        <div class="richlist-item">
+                          <div class="richlist-content">
+                            <span class="richlist-subtitle">
+                              <i class="marker marker-dot text-primary"></i>
+                              200 anggota | 104 anggota (aktif)
+                            </span>
+                            <h4 class="richlist-title">
+                              Lemahnya pendidikan daerah
+                            </h4>
+                          </div>
+                          <div class="richlist-append">
+                            <span class="badge badge-info">Pendidikan</span>
+                          </div>
+                        </div>
+                        <div class="richlist-item border-top">
+                          <div class="richlist-content">
+                            <p class="richlist-paragraph">
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ....
+                            </p>
+                          </div>
+                        </div>
+                        <div class="d-flex align-items-center p-2">
+                          <div class="d-flex align-items-center w-100">
+                            <button class="btn btn-icon">
+                              <i class="far fa-heart"></i>
+                            </button>
+                            <span class="ms-2 fw-medium text-level-3">1M</span>
+                          </div>
+                          <button
+                            class="btn btn-outline-primary btn-sm btn-widest rounded-pill"
+                          >
+                            Gabung
+                          </button>
+                        </div>
+                        <div class="richlist-block">
+                          <i class="fa fa-lock"></i>
+                        </div>
+                      </div>
+
+                      <div
+                        class="d-flex flex-column position-relative overflow-hidden rounded mb-3 disabled"
+                      >
+                        <div class="richlist-item">
+                          <div class="richlist-content">
+                            <span class="richlist-subtitle">
+                              <i class="marker marker-dot text-primary"></i>
+                              200 anggota | 104 anggota (aktif)
+                            </span>
+                            <h4 class="richlist-title">
+                              Lemahnya pendidikan daerah
+                            </h4>
+                          </div>
+                          <div class="richlist-append">
+                            <span class="badge badge-info">Pendidikan</span>
+                          </div>
+                        </div>
+                        <div class="richlist-item border-top">
+                          <div class="richlist-content">
+                            <p class="richlist-paragraph">
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ....
+                            </p>
+                          </div>
+                        </div>
+                        <div class="d-flex align-items-center p-2">
+                          <div class="d-flex align-items-center w-100">
+                            <button class="btn btn-icon">
+                              <i class="far fa-heart"></i>
+                            </button>
+                            <span class="ms-2 fw-medium text-level-3">1M</span>
+                          </div>
+                          <button
+                            class="btn btn-outline-primary btn-sm btn-widest rounded-pill"
+                          >
+                            Gabung
+                          </button>
+                        </div>
+                        <div class="richlist-block">
+                          <i class="fa fa-lock"></i>
+                        </div>
+                      </div>
+
+                      <div
+                        class="d-flex flex-column position-relative overflow-hidden rounded mb-3 disabled"
+                      >
+                        <div class="richlist-item">
+                          <div class="richlist-content">
+                            <span class="richlist-subtitle">
+                              <i class="marker marker-dot text-primary"></i>
+                              200 anggota | 104 anggota (aktif)
+                            </span>
+                            <h4 class="richlist-title">
+                              Lemahnya pendidikan daerah
+                            </h4>
+                          </div>
+                          <div class="richlist-append">
+                            <span class="badge badge-info">Pendidikan</span>
+                          </div>
+                        </div>
+                        <div class="richlist-item border-top">
+                          <div class="richlist-content">
+                            <p class="richlist-paragraph">
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ....
+                            </p>
+                          </div>
+                        </div>
+                        <div class="d-flex align-items-center p-2">
+                          <div class="d-flex align-items-center w-100">
+                            <button class="btn btn-icon">
+                              <i class="far fa-heart"></i>
+                            </button>
+                            <span class="ms-2 fw-medium text-level-3">1M</span>
+                          </div>
+                          <button
+                            class="btn btn-outline-primary btn-sm btn-widest rounded-pill"
+                          >
+                            Gabung
+                          </button>
+                        </div>
+                        <div class="richlist-block">
+                          <i class="fa fa-lock"></i>
+                        </div>
+                      </div>
+
+                      <div
+                        class="d-flex flex-column position-relative overflow-hidden rounded mb-3 disabled"
+                      >
+                        <div class="richlist-item">
+                          <div class="richlist-content">
+                            <span class="richlist-subtitle">
+                              <i class="marker marker-dot text-primary"></i>
+                              200 anggota | 104 anggota (aktif)
+                            </span>
+                            <h4 class="richlist-title">
+                              Lemahnya pendidikan daerah
+                            </h4>
+                          </div>
+                          <div class="richlist-append">
+                            <span class="badge badge-info">Pendidikan</span>
+                          </div>
+                        </div>
+                        <div class="richlist-item border-top">
+                          <div class="richlist-content">
+                            <p class="richlist-paragraph">
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ....
+                            </p>
+                          </div>
+                        </div>
+                        <div class="d-flex align-items-center p-2">
+                          <div class="d-flex align-items-center w-100">
+                            <button class="btn btn-icon">
+                              <i class="far fa-heart"></i>
+                            </button>
+                            <span class="ms-2 fw-medium text-level-3">1M</span>
+                          </div>
+                          <button
+                            class="btn btn-outline-primary btn-sm btn-widest rounded-pill"
+                          >
+                            Gabung
+                          </button>
+                        </div>
+                        <div class="richlist-block">
+                          <i class="fa fa-lock"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="newest-page"> 
+                    <div class="richlist">
+                      <div
+                        class="d-flex flex-column position-relative overflow-hidden rounded mb-3 disabled"
+                      >
+                        <div class="richlist-item">
+                          <div class="richlist-content">
+                            <span class="richlist-subtitle">
+                              <i class="marker marker-dot text-primary"></i>
+                              aktif
+                            </span>
+                            <h4 class="richlist-title">
+                              Lemahnya pendidikan daerah
+                            </h4>
+                          </div>
+                          <div class="richlist-append">
+                            <span class="badge badge-info">Pendidikan</span>
+                          </div>
+                        </div>
+                        <div class="richlist-item border-top">
+                          <div class="richlist-content">
+                            <p class="richlist-paragraph">
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ....
+                            </p>
+                          </div>
+                        </div>
+                        <div class="d-flex align-items-center p-2">
+                          <div class="d-flex align-items-center w-100">
+                            <button class="btn btn-icon">
+                              <i class="far fa-heart"></i>
+                            </button>
+                            <span class="ms-2 fw-medium text-level-3">1M</span>
+                          </div>
+                          <button
+                            class="btn btn-outline-primary btn-sm btn-widest rounded-pill"
+                          >
+                            Gabung
+                          </button>
+                        </div>
+                        <div class="richlist-block">
+                          <i class="fa fa-lock"></i>
+                        </div>
+                      </div>
+
+                      <div
+                        class="d-flex flex-column position-relative overflow-hidden rounded mb-3 disabled"
+                      >
+                        <div class="richlist-item">
+                          <div class="richlist-content">
+                            <span class="richlist-subtitle">
+                              <i class="marker marker-dot text-danger"></i>
+                              10 menit yang lalu
+                            </span>
+                            <h4 class="richlist-title">
+                              Lemahnya pendidikan daerah
+                            </h4>
+                          </div>
+                          <div class="richlist-append">
+                            <span class="badge badge-info">Pendidikan</span>
+                          </div>
+                        </div>
+                        <div class="richlist-item border-top">
+                          <div class="richlist-content">
+                            <p class="richlist-paragraph">
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ....
+                            </p>
+                          </div>
+                        </div>
+                        <div class="d-flex align-items-center p-2">
+                          <div class="d-flex align-items-center w-100">
+                            <button class="btn btn-icon">
+                              <i class="far fa-heart"></i>
+                            </button>
+                            <span class="ms-2 fw-medium text-level-3">1M</span>
+                          </div>
+                          <button
+                            class="btn btn-outline-primary btn-sm btn-widest rounded-pill"
+                          >
+                            Gabung
+                          </button>
+                        </div>
+                        <div class="richlist-block">
+                          <i class="fa fa-lock"></i>
+                        </div>
+                      </div>
+
+                      <div
+                        class="d-flex flex-column position-relative overflow-hidden rounded mb-3 disabled"
+                      >
+                        <div class="richlist-item">
+                          <div class="richlist-content">
+                            <span class="richlist-subtitle">
+                              <i class="marker marker-dot text-danger"></i>
+                              2 hari yang lalu
+                            </span>
+                            <h4 class="richlist-title">
+                              Lemahnya pendidikan daerah
+                            </h4>
+                          </div>
+                          <div class="richlist-append">
+                            <span class="badge badge-info">Pendidikan</span>
+                          </div>
+                        </div>
+                        <div class="richlist-item border-top">
+                          <div class="richlist-content">
+                            <p class="richlist-paragraph">
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ....
+                            </p>
+                          </div>
+                        </div>
+                        <div class="d-flex align-items-center p-2">
+                          <div class="d-flex align-items-center w-100">
+                            <button class="btn btn-icon">
+                              <i class="far fa-heart"></i>
+                            </button>
+                            <span class="ms-2 fw-medium text-level-3">1M</span>
+                          </div>
+                          <button
+                            class="btn btn-outline-primary btn-sm btn-widest rounded-pill"
+                          >
+                            Gabung
+                          </button>
+                        </div>
+                        <div class="richlist-block">
+                          <i class="fa fa-lock"></i>
+                        </div>
+                      </div>
+
+                      <div
+                        class="d-flex flex-column position-relative overflow-hidden rounded mb-3 disabled"
+                      >
+                        <div class="richlist-item">
+                          <div class="richlist-content">
+                            <span class="richlist-subtitle">
+                              <i class="marker marker-dot text-danger"></i>
+                              4 hari yang lalu
+                            </span>
+                            <h4 class="richlist-title">
+                              Lemahnya pendidikan daerah
+                            </h4>
+                          </div>
+                          <div class="richlist-append">
+                            <span class="badge badge-info">Pendidikan</span>
+                          </div>
+                        </div>
+                        <div class="richlist-item border-top">
+                          <div class="richlist-content">
+                            <p class="richlist-paragraph">
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ....
+                            </p>
+                          </div>
+                        </div>
+                        <div class="d-flex align-items-center p-2">
+                          <div class="d-flex align-items-center w-100">
+                            <button class="btn btn-icon">
+                              <i class="far fa-heart"></i>
+                            </button>
+                            <span class="ms-2 fw-medium text-level-3">1M</span>
+                          </div>
+                          <button
+                            class="btn btn-outline-primary btn-sm btn-widest rounded-pill"
+                          >
+                            Gabung
+                          </button>
+                        </div>
+                        <div class="richlist-block">
+                          <i class="fa fa-lock"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
