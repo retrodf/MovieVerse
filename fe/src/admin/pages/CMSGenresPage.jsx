@@ -1,18 +1,36 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Table, Button, Modal, Form, Input, Space } from 'antd';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import axios from 'axios'; // Tambahkan axios
 import "../style/GenresPage.css"; // CSS khusus untuk Genres
 
 const CMSGenres = () => {
-  const [genresData, setGenresData] = useState([
-    { key: '1', genre: 'Romance' },
-    { key: '2', genre: 'Drama' },
-    { key: '3', genre: 'Action' },
-  ]);
-
+  const [genresData, setGenresData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingGenre, setEditingGenre] = useState(null);
+  const [loading, setLoading] = useState(true); // Tambahkan loading state
   const [form] = Form.useForm();
+
+  // Fetch data dari backend
+  useEffect(() => {
+    const fetchGenres = async () => {
+      try {
+        const response = await axios.get('http://localhost:8000/cms/genre'); // Pastikan URL backend benar
+        setGenresData(
+          response.data.map((genre) => ({
+            key: genre.genre_id, // Gunakan genre_id dari database sebagai key
+            genre: genre.genre_name, // Sesuaikan nama field dari database
+          }))
+        );
+        setLoading(false); // Set loading ke false setelah data diterima
+      } catch (error) {
+        console.error('Error fetching genres:', error);
+        setLoading(false); // Set loading ke false jika terjadi error
+      }
+    };
+
+    fetchGenres();
+  }, []);
 
   const handleEdit = (record) => {
     setEditingGenre(record);
@@ -84,7 +102,7 @@ const CMSGenres = () => {
         <h2>Genres Management</h2>
         <Button type="primary" onClick={handleAdd}>Add New Genre</Button>
       </div>
-      <Table columns={columns} dataSource={genresData} pagination={false} className="custom-table" />
+      <Table columns={columns} dataSource={genresData} pagination={false} loading={loading} className="custom-table" />
 
       <Modal
         title={editingGenre ? 'Edit Genre' : 'Add Genre'}

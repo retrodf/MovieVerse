@@ -1,89 +1,167 @@
-import { useState } from "react";
-import { Table, Button, Select, InputNumber, Space, Modal } from "antd";
-import "../style/MoviesValidate.css";
+import { useState, useEffect } from "react";
+import { Table, Button, Input, DatePicker, Space, Modal, message, Form, InputNumber, Select } from "antd";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import moment from 'moment';
+import "../style/MoviesValidate.css";  // Pastikan file CSS sesuai dengan kebutuhan
+import axios from 'axios';
 
 const { Option } = Select;
 
-const CMSmoviesValidate = () => {
-  const [statusFilter, setStatusFilter] = useState("Unapproved");
-  const [showCount, setShowCount] = useState(10);
+const CMSmoviesValPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedMovie, setSelectedMovie] = useState(null); // For storing selected movie details
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [dataSource, setDataSource] = useState([]);
+  const [directors, setDirectors] = useState([]);
+  const [countries, setCountries] = useState([]);
+  const [form] = Form.useForm();
+  const [statusFilter, setStatusFilter] = useState("None");  // Untuk filter status approval
+  const [showCount, setShowCount] = useState(10);  // Untuk kontrol jumlah data yang ditampilkan
 
-  const moviesData = [
-    {
-      key: "1",
-      movies: "[2024] Japan - Eye Love You",
-      actors: "Takuya Kimura, Takeuchi Yuko, Neinen Reina",
-      genres: "Romance, Adventures, Comedy",
-      synopsis: `I love this movie. It taught me a lot about money and finance. Love is not everything.
-                 We need to face the reality too. Being stoic is the best.`,
-      status: "Unapproved",
-      otherTitles: ["Title 2", "Title 3", "Title 4"],
-      year: "Spring 2024",
-      rating: "3.5/5",
-      availability: "Fansub: @aoisub on X",
-      actorsList: ["Actor 1", "Actor 2", "Actor 3", "Actor 4", "Actor 5"],
-    },
-  ];
+  // Load movie data dari backend
+  useEffect(() => {
+    axios.get('http://localhost:5000/cms/movies-approved')
+      .then(response => {
+        setDataSource(response.data);
+      })
+      .catch(error => console.error('Failed to fetch movies:', error));
 
-  const [dataSource, setDataSource] = useState(moviesData);
+    // Load directors
+    axios.get('http://localhost:5000/cms/directors')
+      .then(response => setDirectors(response.data))
+      .catch(error => console.error('Failed to fetch directors:', error));
 
+    // Load countries
+    axios.get('http://localhost:5000/cms/countries')
+      .then(response => setCountries(response.data))
+      .catch(error => console.error('Failed to fetch countries:', error));
+  }, []);
+
+  // Handle perubahan status filter
   const handleStatusChange = (value) => {
     setStatusFilter(value);
   };
 
+  // Handle perubahan jumlah data yang ditampilkan
   const handleShowCountChange = (value) => {
     setShowCount(value);
   };
 
-  const handleApprove = (record) => {
-    setSelectedMovie(record); // Set the movie details for the popup
-    setIsModalOpen(true); // Open the popup modal
+  // Handle tombol edit
+  const handleEdit = (record) => {
+    setSelectedMovie(record);
+    form.setFieldsValue({
+      ...record,
+      release_date: record.release_date ? moment(record.release_date) : null,  // Pre-fill tanggal
+    });
+    setIsModalOpen(true);  // Membuka modal untuk editing
   };
 
-  const handleDelete = (key) => {
-    setDataSource(dataSource.filter((movie) => movie.key !== key));
+  // Handle simpan setelah editing
+  const handleSave = async () => {
+    try {
+      const updatedValues = await form.validateFields();
+      const movieId = selectedMovie.id;
+      
+      const updatedMovie = {
+        ...updatedValues,
+        release_date: updatedValues.release_date ? updatedValues.release_date.format('YYYY-MM-DD') : null,
+      };
+
+      await axios.put(`http://localhost:5000/cms/movies-approved/${movieId}`, updatedMovie);
+
+      message.success('Movie updated successfully!');
+      
+      setDataSource(dataSource.map(movie => movie.id === movieId ? { ...movie, ...updatedMovie } : movie));
+
+      setIsModalOpen(false);
+      setSelectedMovie(null);
+      form.resetFields();
+    } catch (error) {
+      message.error('Failed to update movie');
+    }
   };
+
+  // Handle delete
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5000/cms/movies-approved/${id}`);
+      message.success('Movie deleted!');
+      setDataSource(dataSource.filter(movie => movie.id !== id));
+    } catch (error) {
+      message.error('Failed to delete movie');
+    }
+  };
+
+  // Terapkan filter approval status
+  const filteredData = dataSource.filter(movie => {
+    if (statusFilter === "None") return true;
+    if (statusFilter === "Approved") return movie.approval_status === 1;
+    if (statusFilter === "Unapproved") return movie.approval_status === 0;
+    return true;
+  });
 
   const columns = [
     {
       title: "No",
       key: "no",
       align: "center",
-      render: (text, record, index) => index + 1, // Using index for numbering
+      render: (text, record, index) => index + 1,
     },
     {
-      title: "Movies",
-      dataIndex: "movies",
-      key: "movies",
+      title: "Title",
+      dataIndex: "title",
+      key: "title",
     },
     {
-      title: "Actors",
-      dataIndex: "actors",
-      key: "actors",
+      title: "Rating",
+      dataIndex: "rating",
+      key: "rating",
     },
     {
-      title: "Genres",
-      dataIndex: "genres",
+      title: "Director",
+      dataIndex: "directorId",
+      key: "directorId",
+      render: (directorId) => {
+        const director = directors.find(d => d.id === directorId);
+        return director ? director.name : 'Unknown';
+      },
+    },
+    {
+      title: "Country",
+      dataIndex: "countryId",
+      key: "countryId",
+      render: (countryId) => {
+        const country = countries.find(c => c.countryId === countryId);
+        return country ? country.name : 'Unknown';
+      },
+    },
+    {
+      title: "Release Date",
+      dataIndex: "release_date",
+      key: "release_date",
     },
     {
       title: "Synopsis",
       dataIndex: "synopsis",
       key: "synopsis",
-      render: (text) => (
-        <div className="synopsis-cell">
-          {text.split("\n").map((line, i) => (
-            <p key={i}>{line}</p>
-          ))}
-        </div>
-      ),
+    },
+    {
+      title: "Poster URL",
+      dataIndex: "poster_url",
+      key: "poster_url",
+      render: (url) => <a href={url} target="_blank" rel="noopener noreferrer">Poster</a>,
+    },
+    {
+      title: "Trailer URL",
+      dataIndex: "trailer_url",
+      key: "trailer_url",
+      render: (url) => <a href={url} target="_blank" rel="noopener noreferrer">Trailer</a>,
     },
     {
       title: "Status",
-      dataIndex: "status",
-      key: "status",
+      dataIndex: "approval_status",
+      key: "approval_status",
+      render: (status) => (status === 1 ? 'Approved' : 'Unapproved'),
     },
     {
       title: "Action",
@@ -91,16 +169,8 @@ const CMSmoviesValidate = () => {
       align: "center",
       render: (text, record) => (
         <Space size="middle">
-          <Button
-            type="primary"
-            icon={<EditOutlined />}
-            onClick={() => handleApprove(record)} // Trigger the popup
-          />
-          <Button
-            type="danger"
-            icon={<DeleteOutlined />}
-            onClick={() => handleDelete(record.key)}
-          />
+          <Button type="primary" icon={<EditOutlined />} onClick={() => handleEdit(record)} />
+          <Button type="danger" icon={<DeleteOutlined />} onClick={() => handleDelete(record.id)} />
         </Space>
       ),
     },
@@ -108,7 +178,7 @@ const CMSmoviesValidate = () => {
 
   return (
     <div className="movies-validate-page">
-      {/* Filter Section */}
+      {/* Bagian Filter */}
       <div className="movies-validate-filters">
         <div className="filter-item">
           <span>Filtered by: </span>
@@ -133,64 +203,111 @@ const CMSmoviesValidate = () => {
         </div>
       </div>
 
-      {/* Table Section */}
+      {/* Bagian Tabel */}
       <Table
         columns={columns}
-        dataSource={dataSource}
+        dataSource={filteredData}
         pagination={{ pageSize: showCount }}
+        rowKey="id"
         className="custom-table"
       />
 
-      {/* Movie Approval Popup */}
+      {/* Modal untuk Editing */}
       <Modal
-        title={null}
+        title="Edit Movie"
         open={isModalOpen}
         onCancel={() => setIsModalOpen(false)}
-        footer={null} // No default footer
-        width={800} // Set the width of the modal to match the design
+        onOk={handleSave}
+        okText="Save"
       >
         {selectedMovie && (
-          <div className="movie-approval-popup">
-            <div className="popup-header">
-              <Button type="primary" style={{ backgroundColor: "#FF7F50" }}>
-                Approve
-              </Button>
-              <Button type="danger" style={{ marginLeft: "10px" }}>
-                Delete
-              </Button>
-            </div>
+          <Form form={form} layout="vertical">
+            <Form.Item
+              label="Title"
+              name="title"
+              rules={[{ required: true, message: "Please input the movie title!" }]}
+            >
+              <Input />
+            </Form.Item>
 
-            <div className="popup-content">
-              <div className="movie-info">
-                <div className="movie-poster-placeholder"></div> {/* Poster placeholder */}
-                <div className="movie-details">
-                  <h2>{selectedMovie.movies}</h2>
-                  <p>Other titles: {selectedMovie.otherTitles.join(", ")}</p>
-                  <p>Year: {selectedMovie.year}</p>
-                  <p>{selectedMovie.synopsis}</p>
-                  <p>Genres: {selectedMovie.genres}</p>
-                  <p>Rating: {selectedMovie.rating}</p>
-                  <p>Availability: {selectedMovie.availability}</p>
-                </div>
-              </div>
+            <Form.Item
+              label="Rating"
+              name="rating"
+            >
+              <InputNumber min={0} max={10} />
+            </Form.Item>
 
-              <div className="actors-list">
-                {selectedMovie.actorsList.map((actor, index) => (
-                  <div key={index} className="actor-item">
-                    {actor}
-                  </div>
+            <Form.Item
+              label="Director"
+              name="directorId"
+              rules={[{ required: true, message: "Please select a director!" }]}
+            >
+              <Select>
+                {directors.map(director => (
+                  <Option key={director.id} value={director.id}>{director.name}</Option>
                 ))}
-              </div>
+              </Select>
+            </Form.Item>
 
-              <div className="trailer-placeholder">
-                {/* Placeholder for trailer */}
-              </div>
-            </div>
-          </div>
+            <Form.Item
+              label="Country"
+              name="countryId"
+              rules={[{ required: true, message: "Please select a country!" }]}
+            >
+              <Select>
+                {countries.map(country => (
+                  <Option key={country.countryId} value={country.countryId}>{country.name}</Option>
+                ))}
+              </Select>
+            </Form.Item>
+
+            <Form.Item
+              label="Release Date"
+              name="release_date"
+              rules={[{ required: true, message: "Please select the release date!" }]}
+            >
+              <DatePicker format="YYYY-MM-DD" />
+            </Form.Item>
+
+            <Form.Item
+              label="Synopsis"
+              name="synopsis"
+              rules={[{ required: true, message: "Please input the synopsis!" }]}
+            >
+              <Input.TextArea rows={4} />
+            </Form.Item>
+
+            <Form.Item
+              label="Poster URL"
+              name="poster_url"
+              rules={[{ required: true, message: "Please input the poster URL!" }]}
+            >
+              <Input />
+            </Form.Item>
+
+            <Form.Item
+              label="Trailer URL"
+              name="trailer_url"
+            >
+              <Input />
+            </Form.Item>
+
+            {/* Tambahkan pilihan untuk status approval */}
+            <Form.Item
+              label="Approval Status"
+              name="approval_status"
+              rules={[{ required: true, message: "Please select the approval status!" }]}
+            >
+              <Select>
+                <Option value={1}>Approved</Option>
+                <Option value={0}>Unapproved</Option>
+              </Select>
+            </Form.Item>
+          </Form>
         )}
       </Modal>
     </div>
   );
 };
 
-export default CMSmoviesValidate;
+export default CMSmoviesValPage;

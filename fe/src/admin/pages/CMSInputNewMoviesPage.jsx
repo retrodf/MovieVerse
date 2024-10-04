@@ -1,133 +1,138 @@
-import { Form, Input, Button, DatePicker, Select, Upload, Checkbox, Row, Col } from 'antd';
-import { UploadOutlined } from '@ant-design/icons';
-import "../style/InputMoviesPage.css"; // Tambahkan file CSS
+import { useState, useEffect } from "react";
+import { Form, Input, Button, DatePicker, Select, message } from "antd";
+import axios from "axios";
 
 const { Option } = Select;
 
-const CMSInputNewMovies = () => {
+const CMSInputNewMoviesPage = () => {
   const [form] = Form.useForm();
+  const [loading, setLoading] = useState(false);
+  const [countries, setCountries] = useState([]);
+  const [directors, setDirectors] = useState([]);
 
-  const handleSave = (values) => {
-    console.log('Form values: ', values);
-    form.resetFields(); // Reset form setelah submit
+  // Load countries and directors
+  useEffect(() => {
+    axios.get('http://localhost:5000/cms/countries')
+      .then(response => setCountries(response.data))
+      .catch(error => message.error('Failed to fetch countries'));
+
+    axios.get('http://localhost:5000/cms/directors')
+      .then(response => setDirectors(response.data))
+      .catch(error => message.error('Failed to fetch directors'));
+  }, []);
+
+  const handleSave = async (values) => {
+    try {
+      setLoading(true);
+
+      const formData = {
+        ...values,
+        // Format release_date properly
+        release_date: values.release_date ? values.release_date.format('YYYY-MM-DD') : null,
+        // If rating is not provided, send null
+        rating: values.rating || null,
+      };
+
+      await axios.post('http://localhost:5000/cms/movies-input', formData);
+      message.success("Movie successfully added!");
+      form.resetFields();
+    } catch (error) {
+      message.error("Failed to add movie");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="input-movies-page">
-      <div className="input-movies-header">
-        <h2>Input New Movie</h2>
-      </div>
+      <h2>Input New Movie</h2>
       <Form
         form={form}
         layout="vertical"
         onFinish={handleSave}
-        initialValues={{ genres: [] }}
       >
-        <Row gutter={16}>
-          <Col span={8}>
-            <Form.Item
-              label="Title"
-              name="title"
-              rules={[{ required: true, message: 'Please input the movie title!' }]}
-            >
-              <Input />
-            </Form.Item>
-          </Col>
-          <Col span={8}>
-            <Form.Item
-              label="Country"
-              name="country"
-              rules={[{ required: true, message: 'Please select a country!' }]}
-            >
-              <Select>
-                <Option value="Japan">Japan</Option>
-                <Option value="Korea">Korea</Option>
-                <Option value="China">China</Option>
-              </Select>
-            </Form.Item>
-          </Col>
-          <Col span={8}>
-            <Form.Item
-              label="Release Date"
-              name="releaseDate"
-              rules={[{ required: true, message: 'Please select a release date!' }]}
-            >
-              <DatePicker format="DD MMMM YYYY" />
-            </Form.Item>
-          </Col>
-        </Row>
-
         <Form.Item
-          label="Synopsis"
-          name="synopsis"
-          rules={[{ required: true, message: 'Please input the synopsis!' }]}
-        >
-          <Input.TextArea rows={4} />
-        </Form.Item>
-
-        <Form.Item
-          label="Genres"
-          name="genres"
-          rules={[{ required: true, message: 'Please select at least one genre!' }]}
-        >
-          <Checkbox.Group>
-            <Row>
-              <Col span={6}><Checkbox value="Adventure">Adventure</Checkbox></Col>
-              <Col span={6}><Checkbox value="Romance">Romance</Checkbox></Col>
-              <Col span={5}><Checkbox value="Drama">Drama</Checkbox></Col>
-              <Col span={6}><Checkbox value="Slice of Life">Horror</Checkbox></Col>
-            </Row>
-          </Checkbox.Group>
-        </Form.Item>
-
-        <Form.Item
-          label="Upload Poster"
-          name="poster"
-          valuePropName="fileList"
-          getValueFromEvent={(e) => e && e.fileList}
-        >
-          <Upload listType="picture" maxCount={1} beforeUpload={() => false}>
-            <Button icon={<UploadOutlined />}>Upload Poster</Button>
-          </Upload>
-        </Form.Item>
-
-        <Form.Item
-          label="Link Trailer"
-          name="trailerLink"
+          label="Title"
+          name="title"
+          rules={[{ required: true, message: "Please input the movie title!" }]}
         >
           <Input />
         </Form.Item>
 
         <Form.Item
-          label="Award"
-          name="award"
+          label="Country"
+          name="countryId"
+          rules={[{ required: true, message: "Please select a country!" }]}
         >
           <Select>
-            <Option value="Japanese Drama Awards Spring 2024">Japanese Drama Awards Spring 2024</Option>
-            <Option value="Korean Drama Awards Summer 2024">Korean Drama Awards Summer 2024</Option>
+            {countries.map(country => (
+              <Option key={country.countryId} value={country.countryId}>
+                {country.name}
+              </Option>
+            ))}
           </Select>
         </Form.Item>
 
-        {/* Celebs (Actors) Section */}
         <Form.Item
-          label="Actors"
-          name="actors"
-          rules={[{ required: true, message: 'Please select at least one actor!' }]}
+          label="Director"
+          name="directorId"
+          rules={[{ required: true, message: "Please select a director!" }]}
         >
-          <Select mode="multiple" placeholder="Select actors">
-            <Option value="Takuya Kimura">Takuya Kimura</Option>
-            <Option value="Yuko Takeuchi">Yuko Takeuchi</Option>
-            <Option value="Song Hye Kyo">Song Hye Kyo</Option>
-            <Option value="Lee Min Ho">Lee Min Ho</Option>
+          <Select>
+            {directors.map(director => (
+              <Option key={director.id} value={director.id}>
+                {director.name}
+              </Option>
+            ))}
           </Select>
+        </Form.Item>
+
+        <Form.Item
+          label="Rating (Optional)"
+          name="rating"
+        >
+          <Input type="number" min="0" max="10" placeholder="Enter rating between 0-10" />
+        </Form.Item>
+
+        <Form.Item
+          label="Release Date"
+          name="release_date"
+          rules={[{ required: true, message: "Please select the release date!" }]}
+        >
+          <DatePicker format="YYYY-MM-DD" />
+        </Form.Item>
+
+        <Form.Item
+          label="Synopsis"
+          name="synopsis"
+          rules={[{ required: true, message: "Please input the synopsis!" }]}
+        >
+          <Input.TextArea rows={4} />
+        </Form.Item>
+
+        <Form.Item
+          label="Poster URL"
+          name="poster_url"
+          rules={[{ required: true, message: "Please input the poster URL!" }]}
+        >
+          <Input placeholder="https://example.com/poster.jpg" />
+        </Form.Item>
+
+        <Form.Item
+          label="Trailer URL"
+          name="trailer_url"
+        >
+          <Input placeholder="https://youtube.com/trailer" />
         </Form.Item>
 
         <Form.Item>
-          <Button type="primary" htmlType="submit">Submit</Button>
+          <Button type="primary" htmlType="submit" loading={loading}>
+            Submit
+          </Button>
         </Form.Item>
       </Form>
     </div>
   );
 };
 
-export default CMSInputNewMovies;
+export default CMSInputNewMoviesPage;

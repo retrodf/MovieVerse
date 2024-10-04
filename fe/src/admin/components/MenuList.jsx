@@ -12,53 +12,91 @@ import {
 } from "@ant-design/icons";
 
 const MenuList = ({ darkTheme }) => {
+  const menuItems = [
+    {
+      key: "home",
+      icon: <HomeOutlined />,
+      label: <Link to="/">Home</Link>,
+    },
+    {
+      key: "movies",
+      icon: <VideoCameraOutlined />,
+      label: "Movies",
+      children: [
+        {
+          key: "validateMovies",
+          label: <Link to="/cms/movies-approved">Validate</Link>,
+        },
+        {
+          key: "InputNewMovies",
+          label: <Link to="/cms/movies-input">Input New Movies</Link>,
+        },
+      ],
+    },
+    {
+      key: "series",
+      icon: <VideoCameraOutlined />,
+      label: "Series",
+      children: [
+        {
+          key: "validateSeries",
+          label: <Link to="/cms/series-approved">Validate</Link>,
+        },
+        {
+          key: "InputNewseries",
+          label: <Link to="/cms/series-input">Input New Series</Link>,
+        },
+      ],
+    },
+    {
+      key: "countries",
+      icon: <FlagOutlined />,
+      label: <Link to="/cms/countries">Countries</Link>,
+    },
+    {
+      key: "awards",
+      icon: <TrophyOutlined />,
+      label: <Link to="/cms/awards">Awards</Link>,
+    },
+    {
+      key: "genres",
+      icon: <TagsOutlined />,
+      label: <Link to="/cms/genres">Genres</Link>,
+    },
+    {
+      key: "actors",
+      icon: <UserOutlined />,
+      label: <Link to="/cms/actors">Actors</Link>,
+    },
+    {
+      key: "directors",
+      icon: <UserOutlined />,
+      label: <Link to="/cms/directors">Directors</Link>,
+    },
+    {
+      key: "comments",
+      icon: <CommentOutlined />,
+      label: <Link to="/cms/comments">Comments</Link>,
+    },
+    {
+      key: "users",
+      icon: <UserOutlined />,
+      label: <Link to="/cms/users">Users</Link>,
+    },
+    {
+      key: "logout",
+      icon: <LogoutOutlined />,
+      label: "Logout",
+    },
+  ];
+
   return (
     <Menu
       theme={darkTheme ? "dark" : "light"}
       mode="inline"
       className="menuCMS"
-    >
-      <Menu.Item key="home" icon={<HomeOutlined />}>
-        <Link to="/">Home</Link>
-      </Menu.Item>
-      <Menu.SubMenu key="movies" icon={<VideoCameraOutlined />} title="Movies">
-        <Menu.Item key="validateMovies">
-          <Link to="/cms/movies-approved">Validate</Link>
-        </Menu.Item>
-        <Menu.Item key="InputNewMovies">
-          <Link to="/cms/movies-input">Input New Movies</Link>
-        </Menu.Item>
-      </Menu.SubMenu>
-      <Menu.SubMenu key="series" icon={<VideoCameraOutlined />} title="Series">
-        <Menu.Item key="validateSeries">
-          <Link to="/cms/series-approved">Validate</Link>
-        </Menu.Item>
-        <Menu.Item key="InputNewseries">
-          <Link to="/cms/series-input">Input New Series</Link>
-        </Menu.Item>
-      </Menu.SubMenu>
-      <Menu.Item key="countries" icon={<FlagOutlined />}>
-        <Link to="/cms/countries">Countries</Link>
-      </Menu.Item>
-      <Menu.Item key="awards" icon={<TrophyOutlined />}>
-        <Link to="/cms/awards">Awards</Link>
-      </Menu.Item>
-      <Menu.Item key="genres" icon={<TagsOutlined />}>
-        <Link to="/cms/genres">Genres</Link>
-      </Menu.Item>
-      <Menu.Item key="celebs" icon={<UserOutlined />}>
-        <Link to="/cms/celebs">Celebs</Link>
-      </Menu.Item>
-      <Menu.Item key="comments" icon={<CommentOutlined />}>
-        <Link to="/cms/comments">Comments</Link>
-      </Menu.Item>
-      <Menu.Item key="users" icon={<UserOutlined />}>
-        <Link to="/cms/users">Users</Link>
-      </Menu.Item>
-      <Menu.Item key="logout" icon={<LogoutOutlined />}>
-        Logout
-      </Menu.Item>
-    </Menu>
+      items={menuItems}
+    />
   );
 };
 

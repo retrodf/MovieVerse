@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
-import { apiKey } from "../data";
+import axios from "axios";
 
 const PopularMovies = () => {
   const [movies, setMovies] = useState([]);
@@ -11,14 +11,9 @@ const PopularMovies = () => {
 
   useEffect(() => {
     const fetchMovies = async () => {
-      const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`;
       try {
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
-        setMovies(data.results);
+        const response = await axios.get("http://localhost:5000/api/admin/movie/popular"); // Panggil API dari backend
+        setMovies(response.data);
         setLoading(false);
       } catch (error) {
         setError(error);
@@ -60,7 +55,7 @@ const PopularMovies = () => {
           <div key={movie.id} className="movie-item">
             <Link to={`/movie/${movie.id}`}>
               <img
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                src={movie.poster_url} // Menggunakan poster_url dari backend
                 alt={movie.title}
                 className="movie-poster"
               />
@@ -72,11 +67,11 @@ const PopularMovies = () => {
                 <div
                   className="rating-circle"
                   style={{
-                    border: `5px solid ${movie.vote_average >= 7 ? "green" : "red"}`,
-                    borderColor: `conic-gradient(green ${movie.vote_average * 10}%, #ccc 0)`,
+                    border: `5px solid ${movie.rating >= 7 ? "green" : "red"}`,
+                    borderColor: `conic-gradient(green ${movie.rating * 10}%, #ccc 0)`,
                   }}
                 >
-                  <span className="rating-text">{movie.vote_average}</span>
+                  <span className="rating-text">{movie.rating}</span>
                 </div>
               </div>
               <a

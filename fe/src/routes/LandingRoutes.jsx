@@ -16,7 +16,7 @@ import CelebsPage from "../pages/CelebsPage";
 function LandingRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<HomePage />} />
+      <Route path="/home" element={<HomePage />} />
       <Route path="/movie/:id" element={<MovieDetail />} />
       <Route path="/series/:id" element={<SeriesDetail />} />
       <Route path="/celebs/:id" element={<CelebsDetail />} />

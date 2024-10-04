@@ -9,7 +9,7 @@ const CMSAwards = () => {
       key: '1',
       country: 'Japan',
       year: '2024',
-      award: 'Japanese Drama Awards Spring 2024',
+      award: 'Japan ese Drama Awards Spring 2024',
     },
     {
       key: '2',

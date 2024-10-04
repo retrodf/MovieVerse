@@ -9,11 +9,12 @@ import ToggleThemeButton from "../admin/components/ToggleThemeButton";
 
 import CMSUserPage from "../admin/pages/CMSUserPage";
 import CMSAwardsPage from "../admin/pages/CMSAwardsPage";
-import CMSGenresPage from "../admin/pages/CMSGenresPage";
+import CMSGenresPage from "../admin/pages/CMSGenresPage"; 
 import CMSMoviesValPage from "../admin/pages/CMSMoviesValPage";
 import CMSSeriesValPage from "../admin/pages/CMSSeriesValPage";
 import CMSCountriesPage from "../admin/pages/CMSCountriesPage";
-import CMSCelebsPage from "../admin/pages/CMSCelebsPage";
+import CMSActorsPage from "../admin/pages/CMSActorsPage";
+import CMSDirectorsPage from "../admin/pages/CMSDirectorsPage";
 import CMSCommentsPage from "../admin/pages/CMSCommentsPage";
 import CMSInputNewMoviesPage from "../admin/pages/CMSInputNewMoviesPage";
 import CMSInputNewSeriesPage from "../admin/pages/CMSSeriesNewInputPage";
@@ -59,7 +60,8 @@ function CMSRoutes() {
           <Route path="/cms/movies-input" element={<CMSInputNewMoviesPage />} />
           <Route path="/cms/series-input" element={<CMSInputNewSeriesPage />} />
           <Route path="/cms/countries" element={<CMSCountriesPage />} />
-          <Route path="/cms/celebs" element={<CMSCelebsPage />} />
+          <Route path="/cms/actors" element={<CMSActorsPage />} />
+          <Route path="/cms/directors" element={<CMSDirectorsPage />} />
         </Routes>
       </Content>
     </Layout>
