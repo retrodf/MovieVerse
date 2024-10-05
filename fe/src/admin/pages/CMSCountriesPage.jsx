@@ -1,32 +1,31 @@
-import { useState, useEffect } from 'react';
-import { Table, Button, Modal, Form, Input, Space, Radio } from 'antd';
-import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
-import axios from 'axios'; // Tambahkan axios untuk HTTP request
-import "../style/CountriesPage.css";  // Jangan lupa buat file CSS-nya
+import { useState, useEffect } from "react";
+import { Table, Button, Modal, Form, Input, Space, message } from "antd";
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import axios from "axios";
+import "../style/CountriesPage.css";
 
-const CMSCountries = () => {
+const CMSCountriesPage = () => {
   const [countriesData, setCountriesData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingCountry, setEditingCountry] = useState(null);
-  const [loading, setLoading] = useState(true); // Tambahkan loading state
+  const [loading, setLoading] = useState(true);
   const [form] = Form.useForm();
 
   // Fetch data dari backend
   useEffect(() => {
     const fetchCountries = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/cms/countries'); // Pastikan URL backend benar
+        const response = await axios.get("http://localhost:5000/cms/countries");  // URL disesuaikan dengan route BE
         setCountriesData(
           response.data.map((country) => ({
-            key: country.country_id, // Sesuaikan key dengan field dari database (misal: country_id)
-            country: country.country_name, // Pastikan nama field sesuai dengan database (misal: country_name)
-            isDefault: country.is_default === 1 ? true : false // Pastikan nama field sesuai
+            key: country.countryId,  // Disesuaikan dengan field countryId dari API
+            country: country.name,   // Disesuaikan dengan field name dari API
           }))
         );
-        setLoading(false); // Set loading ke false setelah data diterima
+        setLoading(false);
       } catch (error) {
-        console.error('Error fetching countries:', error);
-        setLoading(false); // Set loading ke false jika ada error
+        console.error("Error fetching countries:", error);
+        setLoading(false);
       }
     };
 
@@ -39,35 +38,43 @@ const CMSCountries = () => {
     setIsModalOpen(true);
   };
 
-  const handleDelete = (key) => {
-    setCountriesData(countriesData.filter(country => country.key !== key));
+  const handleDelete = async (key) => {
+    try {
+      await axios.delete(`http://localhost:5000/cms/countries/${key}`);
+      message.success("Country deleted successfully");
+      setCountriesData(countriesData.filter((country) => country.key !== key));
+    } catch (error) {
+      message.error("Failed to delete country");
+    }
   };
 
-  const handleSave = (values) => {
-    // Jika ada country default, hapus flag default pada semua negara
-    if (values.isDefault) {
-      setCountriesData(countriesData.map(country => ({
-        ...country,
-        isDefault: false,
-      })));
-    }
+  const handleSave = async (values) => {
+    try {
+      if (editingCountry) {
+        // Jika sedang mengedit
+        await axios.put(`http://localhost:5000/cms/countries/${editingCountry.key}`, values);
+        setCountriesData(
+          countriesData.map((country) =>
+            country.key === editingCountry.key ? { ...country, ...values } : country
+          )
+        );
+        message.success("Country updated successfully");
+      } else {
+        // Jika menambahkan negara baru
+        const response = await axios.post("http://localhost:5000/cms/countries", values);
+        setCountriesData([
+          ...countriesData,
+          { ...response.data, key: response.data.id },  // Sesuaikan dengan response BE
+        ]);
+        message.success("Country added successfully");
+      }
 
-    if (editingCountry) {
-      setCountriesData(
-        countriesData.map(country =>
-          country.key === editingCountry.key ? { ...country, ...values } : country
-        )
-      );
-    } else {
-      const newCountry = {
-        key: `${countriesData.length + 1}`,
-        ...values,
-      };
-      setCountriesData([...countriesData, newCountry]);
+      setIsModalOpen(false);
+      setEditingCountry(null);
+      form.resetFields();
+    } catch (error) {
+      message.error("Failed to save country");
     }
-    setIsModalOpen(false);
-    setEditingCountry(null);
-    form.resetFields();
   };
 
   const handleAdd = () => {
@@ -78,27 +85,21 @@ const CMSCountries = () => {
 
   const columns = [
     {
-      title: 'No',
-      key: 'no',
-      align: 'center',
-      render: (text, record, index) => index + 1, // Menggunakan index untuk nomor
+      title: "No",
+      key: "no",
+      align: "center",
+      render: (text, record, index) => index + 1,
     },
     {
-      title: 'Country',
-      dataIndex: 'country',
-      key: 'country',
+      title: "Country",
+      dataIndex: "country",
+      key: "country",
+      render: (country) => country || "Unknown",
     },
     {
-      title: 'Default',
-      dataIndex: 'isDefault',
-      key: 'isDefault',
-      align: 'center',
-      render: (isDefault) => (isDefault ? '✔' : ''),
-    },
-    {
-      title: 'Actions',
-      key: 'actions',
-      align: 'center',
+      title: "Actions",
+      key: "actions",
+      align: "center",
       render: (text, record) => (
         <Space size="middle">
           <Button
@@ -120,33 +121,31 @@ const CMSCountries = () => {
     <div className="countries-page">
       <div className="countries-header">
         <h2>Countries Management</h2>
-        <Button type="primary" onClick={handleAdd}>Add New Country</Button>
+        <Button type="primary" onClick={handleAdd}>
+          Add New Country
+        </Button>
       </div>
-      <Table columns={columns} dataSource={countriesData} pagination={false} loading={loading} className="custom-table" />
+      <Table
+        columns={columns}
+        dataSource={countriesData}
+        pagination={false}
+        loading={loading}
+        className="custom-table"
+      />
 
       <Modal
-        title={editingCountry ? 'Edit Country' : 'Add Country'}
+        title={editingCountry ? "Edit Country" : "Add Country"}
         open={isModalOpen}
         onCancel={() => setIsModalOpen(false)}
         onOk={form.submit}
       >
         <Form form={form} layout="vertical" onFinish={handleSave}>
           <Form.Item
-            label="Country"
-            name="country"
-            rules={[{ required: true, message: 'Please input the country name!' }]}
+            label="Country Name"
+            name="name"
+            rules={[{ required: true, message: "Please input the country name!" }]}
           >
             <Input />
-          </Form.Item>
-          <Form.Item
-            label="Set as Default"
-            name="isDefault"
-            valuePropName="checked"
-          >
-            <Radio.Group>
-              <Radio value={true}>Yes</Radio>
-              <Radio value={false}>No</Radio>
-            </Radio.Group>
           </Form.Item>
         </Form>
       </Modal>
@@ -154,4 +153,4 @@ const CMSCountries = () => {
   );
 };
 
-export default CMSCountries;
+export default CMSCountriesPage;

@@ -1,60 +1,54 @@
-const db = require("../library/database");
+const Director = require("../models/directorModel");
 
-const DirectorController = {
-  // Get all directors
-  getAllDirectors: async (req, res) => {
-    try {
-      const [directors] = await db.query("SELECT * FROM director");
-      res.json(directors);
-    } catch (error) {
-      console.error(error); // Tambahkan ini
-      res.status(500).json({ message: "Error retrieving directors" });
-    }
-  },
-
-  // Create new director
-  createDirector: async (req, res) => {
-    try {
-      const { name, birthdate, countryId, biography } = req.body;
-      const [result] = await db.query(
-        "INSERT INTO director (name, birthdate, countryId, biography) VALUES (?, ?, ?, ?)",
-        [name, birthdate, countryId, biography]
-      );
-      res.status(201).json({ message: "Director created", id: result.insertId });
-    } catch (error) {
-      res.status(500).json({ message: "Error creating director" });
-    }
-  },
-
-  // Update director by id
-  updateDirector: async (req, res) => {
-    try {
-      const { name, birthdate, countryId, biography } = req.body;
-      const [result] = await db.query(
-        "UPDATE director SET name = ?, birthdate = ?, countryId = ?, biography = ? WHERE id = ?",
-        [name, birthdate, countryId, biography, req.params.id]
-      );
-      if (result.affectedRows === 0) {
-        return res.status(404).json({ message: "Director not found" });
-      }
-      res.json({ message: "Director updated successfully" });
-    } catch (error) {
-      res.status(500).json({ message: "Error updating director" });
-    }
-  },
-
-  // Delete director by id
-  deleteDirector: async (req, res) => {
-    try {
-      const [result] = await db.query("DELETE FROM director WHERE id = ?", [req.params.id]);
-      if (result.affectedRows === 0) {
-        return res.status(404).json({ message: "Director not found" });
-      }
-      res.json({ message: "Director deleted successfully" });
-    } catch (error) {
-      res.status(500).json({ message: "Error deleting director" });
-    }
+exports.getAllDirectors = async (req, res) => {
+  try {
+    const [directors] = await Director.getAllDirectors();
+    res.status(200).json(directors);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
 };
 
-module.exports = DirectorController;
+exports.getDirectorById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const [director] = await Director.getDirectorById(id);
+    if (director.length === 0) {
+      return res.status(404).json({ message: "Director not found" });
+    }
+    res.status(200).json(director[0]);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+exports.createDirector = async (req, res) => {
+  try {
+    const newDirector = req.body;
+    await Director.createDirector(newDirector);
+    res.status(201).json({ message: "Director created successfully" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+exports.updateDirector = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updatedDirector = req.body;
+    await Director.updateDirector(id, updatedDirector);
+    res.status(200).json({ message: "Director updated successfully" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+exports.deleteDirector = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Director.deleteDirector(id);
+    res.status(200).json({ message: "Director deleted successfully" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};

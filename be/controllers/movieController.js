@@ -33,12 +33,19 @@ const MovieController = {
   getAllMovies: async (req, res) => {
     try {
       const [movies] = await db.query(`
-                SELECT movie.*
-                FROM movie
-            `);
-      res.json(movies);
+        SELECT 
+          m.id, m.title, m.rating, m.directorId, m.approval_status, m.countryId, m.release_date, 
+          m.synopsis, m.poster_url, m.trailer_url, d.name as director, c.name as country
+        FROM 
+          movie m
+        LEFT JOIN 
+          director d ON m.directorId = d.id
+        LEFT JOIN 
+          country c ON m.countryId = c.countryId
+      `);
+      res.status(200).json(movies);
     } catch (error) {
-      res.status(500).json({ message: "Error retrieving all movies" });
+      res.status(500).json({ message: "Error retrieving movies", error: error.message });
     }
   },
 

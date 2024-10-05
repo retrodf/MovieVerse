@@ -1,33 +1,47 @@
 const db = require("../library/database");
 
 const Director = {
-  getAll: async () => {
-    const [directors] = await db.query("SELECT * FROM director");
-    return directors;
+  getAllDirectors: async () => {
+    return db.query(`
+      SELECT 
+        d.id, d.name, d.birthdate, c.name as country, d.biography
+      FROM 
+        director d
+      LEFT JOIN 
+        country c ON d.countryId = c.countryId
+    `);
   },
-  getById: async (id) => {
-    const [director] = await db.query("SELECT * FROM director WHERE id = ?", [id]);
-    return director[0];
+
+  getDirectorById: async (id) => {
+    return db.query(`
+      SELECT 
+        d.id, d.name, d.birthdate, c.name as country, d.biography
+      FROM 
+        director d
+      LEFT JOIN 
+        country c ON d.countryId = c.countryId
+      WHERE d.id = ?
+    `, [id]);
   },
-  create: async (directorData) => {
+
+  createDirector: async (directorData) => {
     const { name, birthdate, countryId, biography } = directorData;
-    const [result] = await db.query(
-      "INSERT INTO director (name, birthdate, countryId, biography) VALUES (?, ?, ?, ?)",
+    return db.query(
+      `INSERT INTO director (name, birthdate, countryId, biography) VALUES (?, ?, ?, ?)`,
       [name, birthdate, countryId, biography]
     );
-    return result.insertId;
   },
-  update: async (id, directorData) => {
+
+  updateDirector: async (id, directorData) => {
     const { name, birthdate, countryId, biography } = directorData;
-    const [result] = await db.query(
-      "UPDATE director SET name = ?, birthdate = ?, countryId = ?, biography = ? WHERE id = ?",
+    return db.query(
+      `UPDATE director SET name = ?, birthdate = ?, countryId = ?, biography = ? WHERE id = ?`,
       [name, birthdate, countryId, biography, id]
     );
-    return result.affectedRows;
   },
-  delete: async (id) => {
-    const [result] = await db.query("DELETE FROM director WHERE id = ?", [id]);
-    return result.affectedRows;
+
+  deleteDirector: async (id) => {
+    return db.query(`DELETE FROM director WHERE id = ?`, [id]);
   }
 };
 

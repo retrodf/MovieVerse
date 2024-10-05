@@ -128,12 +128,9 @@ const CMSmoviesValPage = () => {
     },
     {
       title: "Country",
-      dataIndex: "countryId",
-      key: "countryId",
-      render: (countryId) => {
-        const country = countries.find(c => c.countryId === countryId);
-        return country ? country.name : 'Unknown';
-      },
+      dataIndex: "country",
+      key: "country",
+      render: (country) => country || "Unknown", // Gunakan country name yang diambil dari join query
     },
     {
       title: "Release Date",
