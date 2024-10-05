@@ -13,7 +13,8 @@ const Director = {
   },
 
   getDirectorById: async (id) => {
-    return db.query(`
+    return db.query(
+      `
       SELECT 
         d.id, d.name, d.birthdate, c.name as country, d.biography
       FROM 
@@ -21,7 +22,9 @@ const Director = {
       LEFT JOIN 
         country c ON d.countryId = c.countryId
       WHERE d.id = ?
-    `, [id]);
+    `,
+      [id]
+    );
   },
 
   createDirector: async (directorData) => {
@@ -42,7 +45,7 @@ const Director = {
 
   deleteDirector: async (id) => {
     return db.query(`DELETE FROM director WHERE id = ?`, [id]);
-  }
+  },
 };
 
 module.exports = Director;

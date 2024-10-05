@@ -8,7 +8,12 @@ const pool = mysql.createPool({
   database: process.env.DB_NAME,
   waitForConnections: true,
   connectionLimit: 10,
-  queueLimit: 0
+  queueLimit: 0,
+  charset: 'utf8mb4',  // Pastikan charset mendukung UTF-8
+  rowsAsArray: false,  // Mengembalikan hasil query sebagai objek bukan array
+  decimalNumbers: true,  // Tambahan jika ada tipe data decimal
+  supportBigNumbers: true,
+  bigNumberStrings: true
 });
 
-module.exports = pool.promise();  
+module.exports = pool.promise();
