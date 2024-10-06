@@ -1,0 +1,72 @@
+*{
+    font-family: "Poppins", sans-serif;
+}
+
+:root {
+    --primary-color: #f6f8fd;
+    --secondary-color: #dc3545;
+    --color-text: #231942;
+    --navbar-color: #ffffff;
+    --navbar-color-text: #000000;
+  } 
+  
+  .dropdown-container {
+    display: flex;
+    justify-content: center; /* Centering the dropdowns */
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
+    /* gap: 30px;  */
+  }
+  
+  
+  .label-filter {
+    margin-right: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--navbar-color);
+    white-space: nowrap;
+  }
+  
+.dropdown-filter {
+  margin: 0 40px;
+} 
+  
+  .dropdown-toggle {
+    width: 100%;
+    padding: 10px 15px;
+    font-weight: bold;
+    background-color: var(--secondary-color);
+    border: none;
+    color: white;
+    text-align: left;
+    border-radius: 5px;
+  }
+  
+  .dropdown-toggle:focus {
+    box-shadow: none;
+  }
+  
+  .dropdown-menu {
+    background-color: var(--secondary-color);
+    color: var(--secondary-color);
+  }
+  
+  .dropdown-menu .dropdown-item {
+    color: var(--secondary-color);
+  }
+  
+  .dropdown-menu .dropdown-item:hover {
+    background-color: var(--secondary-color);
+  }
+
+  .btn.dropdown-toggle {
+    width: auto; /* Sesuaikan lebar berdasarkan konten di dalamnya */
+    padding: 0.5rem 1rem; /* Atur padding agar tombol tidak terlalu besar */
+    background-color: var(--secondary-color); /* Warna merah yang kamu gunakan */
+    border: none;
+    color: white;
+    border-radius: 0.25rem;
+  }
+  
+  

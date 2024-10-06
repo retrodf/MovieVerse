@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { Container, Row, Col, Carousel, Form, Button } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { Link, useParams } from "react-router-dom";
 import { apiKey } from "../data";
 
@@ -236,25 +238,58 @@ const MovieDetailPage = () => {
         </Row>
       </Container>
 
-      {/* Recommended Movies Section */}
-      <Container className="mt-5">
+     {/* Recommended Movies Section */}
+     <Container className="mt-5">
         <h2 className="text-white">Recommended Movies</h2>
-        <Row>
+        <div
+          className="movie-list"
+          style={{
+            display: "flex",
+            overflowX: "scroll",
+            padding: "10px 0",
+            gap: "10px",
+            whiteSpace: "nowrap",
+          }}
+        >
           {recommendedMovies.map((movie) => (
-            <Col md={3} key={movie.id}>
+            <div key={movie.id} className="movie-item">
               <Link to={`/movie/${movie.id}`}>
-                <div className="movie-card text-white">
-                  <img
-                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                    alt={movie.title}
-                    className="img-fluid"
-                  />
-                  <h5 className="mt-2">{movie.title}</h5>
-                </div>
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                  alt={movie.title}
+                  className="movie-poster"
+                />
               </Link>
-            </Col>
+              <div className="movie-info">
+                <h5>{movie.title}</h5>
+                <p>{movie.release_date}</p>
+
+                {/* Rating Circle */}
+                <div className="rating-container">
+                  <div
+                    className="rating-circle"
+                    style={{
+                      border: `5px solid ${movie.vote_average >= 7 ? "green" : "red"}`,
+                      borderColor: `conic-gradient(green ${movie.vote_average * 10}%, #ccc 0)`,
+                    }}
+                  >
+                    <span className="rating-text">{movie.vote_average}</span>
+                  </div>
+                </div>
+
+                {/* YouTube Search Icon */}
+                <a
+                  href={`https://www.youtube.com/results?search_query=${encodeURIComponent(movie.title)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="movie-info-icon"
+                >
+                  <FontAwesomeIcon color="#dc3545" icon={faYoutube} size="2x" />
+                </a>
+              </div>
+            </div>
           ))}
-        </Row>
+        </div>
       </Container>
 
       {/* Reviews Section */}
