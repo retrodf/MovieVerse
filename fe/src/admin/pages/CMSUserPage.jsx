@@ -26,7 +26,7 @@ const CMSUserPage = () => {
         })));
         setLoading(false); // Hentikan loading ketika data sudah diambil
       } catch (error) {
-        console.error('Error fetching users:', error);
+        console.error('Error fetching user:', error);
         setLoading(false);
       }
     };

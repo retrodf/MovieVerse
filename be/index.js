@@ -11,7 +11,7 @@ const db = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "", 
-  database: "movieverse."
+  database: "movieverse_db"
 });
 
 db.connect((err) => {
@@ -22,11 +22,12 @@ db.connect((err) => {
   console.log('Connected to MySQL!');
 });
 
+// GET endpoint untuk mendapatkan semua user
 app.get('/cms/users', (req, res) => {
-  const sql = 'SELECT * FROM users';
+  const sql = 'SELECT * FROM user';
   db.query(sql, (err, results) => {
     if (err) {
-      console.error('Error fetching users:', err);
+      console.error('Error fetching user:', err);
       res.status(500).send('Server error');
       return;
     }
@@ -34,11 +35,12 @@ app.get('/cms/users', (req, res) => {
   });
 });
 
-app.get('/cms/countries',  (req, res) => {
-  const sql = 'SELECT * FROM countries';
+// GET endpoint untuk mendapatkan semua negara
+app.get('/cms/countries', (req, res) => {
+  const sql = 'SELECT * FROM country';
   db.query(sql, (err, results) => {
     if (err) {
-      console.error('Error fetching countries:', err);
+      console.error('Error fetching country:', err);
       res.status(500).send('Server error');
       return;
     }
@@ -46,6 +48,18 @@ app.get('/cms/countries',  (req, res) => {
   });
 });
 
+// GET endpoint untuk mendapatkan semua genre
+app.get('/cms/genres', (req, res) => {
+  const sql = 'SELECT id, name FROM genre'; // Query untuk mengambil id dan name dari tabel genre
+  db.query(sql, (err, results) => {
+    if (err) {
+      console.error('Error fetching genres:', err);
+      res.status(500).send('Server error');
+      return;
+    }
+    res.json(results); // Kirim hasil query sebagai JSON
+  });
+});
 
 // Starting the server
 const PORT = 8000;

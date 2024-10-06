@@ -64,10 +64,11 @@ const TopRatedSeries = () => {
                 src={`https://image.tmdb.org/t/p/w500${tvShow.poster_path}`}
                 alt={tvShow.name}
                 className="movie-poster"
+                style={{ width: '100%', borderRadius: '10px', transition: 'transform 0.3s' }}
               />
             </Link>
             <div className="movie-info">
-              <h5>{tvShow.name}</h5>
+              <h5 style={styles.tvShowTitle}>{tvShow.name}</h5>
               <p>{tvShow.first_air_date}</p>
               <div className="rating-container">
                 <div
@@ -94,6 +95,18 @@ const TopRatedSeries = () => {
       </div>
     </div>
   );
+};
+const styles = {
+  tvShowTitle: {
+    textAlign: 'center',       // Pusatkan teks
+    whiteSpace: 'normal',      // Izinkan teks membungkus
+    overflow: 'hidden',        // Sembunyikan overflow
+    textOverflow: 'ellipsis',  // Tambahkan ellipsis jika terlalu panjang
+    wordWrap: 'break-word',    // Pecah kata jika terlalu panjang
+    display: '-webkit-box',    // Kotak untuk text clamping (opsional)
+    WebkitLineClamp: 2,        // Batas 2 baris (opsional)
+    WebkitBoxOrient: 'vertical', // Vertikal orientasi untuk clamping (opsional)
+  },
 };
 
 export default TopRatedSeries;

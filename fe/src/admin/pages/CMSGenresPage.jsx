@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Table, Button, Modal, Form, Input, Space } from 'antd';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import axios from 'axios'; // Tambahkan axios
 import "../style/GenresPage.css"; // CSS khusus untuk Genres
 
 const CMSGenres = () => {

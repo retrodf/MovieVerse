@@ -4,6 +4,7 @@ import FooterComponent from "./components/FooterComponent";
 import LandingPageRoutes from "./routes/LandingRoutes";
 import CMSRoutes from "./routes/CMSRoutes";
 
+
 function App() {
   const location = useLocation();
 

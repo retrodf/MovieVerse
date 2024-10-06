@@ -1,125 +1,70 @@
-/* Container utama untuk page selebriti */
+*{
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --primary-color: #f6f8fd;
+  --secondary-color: #dc3545;
+  --color-text: #231942;
+  --navbar-color: #ffffff;
+  --navbar-color-text: #000000;
+}
+
+/* CelebsDetail.css */
+
+/* General container style */
 .celeb-detail-container {
-  padding-top: 100px; /* Jarak dari navbar */
   color: #fff;
 }
 
-/* Styling untuk bagian header selebriti */
-.celeb-header h1 {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
+.movie-list {
+  display: flex;
+  overflow-x: scroll;
+  padding: 10px 0;
+  gap: 10px;
+  white-space: nowrap;
 }
 
-.celeb-header p {
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
-}
-
-/* Foto selebriti dengan jarak */
-.celeb-photo {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-  margin-bottom: 1rem;
-}
-
-/* Bagian detail selebriti */
-.celeb-details h3 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-}
-
-.celeb-details p {
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-bottom: 0.8rem;
-}
-
-/* Bagian untuk daftar film selebriti */
-.movies-section h3 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-}
-
-.movie-card {
-  margin-bottom: 20px;
-}
-
-.movie-card img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-}
-
-.movie-card p {
-  font-size: 1rem;
+.movie-item {
+  width: 150px;
+  flex-shrink: 0;
   text-align: center;
-  margin-top: 0.5rem;
 }
 
-/* Bagian untuk foto selebriti */
-.photos-section h3 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-}
-
-.photo-card img {
+.movie-poster {
   width: 100%;
   height: auto;
   border-radius: 10px;
   transition: transform 0.3s ease;
 }
 
-.photo-card img:hover {
+.movie-poster:hover {
   transform: scale(1.05);
 }
 
-.small-carousel .carousel-item {
-  max-width: 180px; /* Sesuaikan lebar carousel */
-  margin: auto;
+.movie-info {
+  color: white;
+  margin-top: 10px;
 }
 
-.small-carousel img {
-  max-width: 100%;
-  max-height: 280px; /* Sesuaikan tinggi maksimal gambar */
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.movie-poster {
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.movie-title {
-  font-size: 0.9rem;
+.movie-info h5 {
+  font-size: 1rem;
   font-weight: bold;
 }
 
-.celeb-photo-carousel {
-  max-height: 280px; /* Batas tinggi untuk foto celeb */
-  object-fit: cover;
+.movie-info p {
+  font-size: 0.9rem;
+  color: #aaa;
 }
 
-.celeb-photo {
-  max-height: 400px;
-  object-fit: cover;
+.celeb-image {
+  width: 15%; /* Sesuaikan persentase untuk memperbesar atau memperkecil gambar */
+  max-width: 200px; /* Bisa diatur agar gambar tidak melebihi ukuran tertentu */
+  height: auto; /* Agar gambar tetap proporsional */
+  border-radius: 10px; /* Tetap mempertahankan sudut melengkung */
 }
 
-.movie-card img,
-.photo-card img {
-  height: 300px;
-  object-fit: cover;
-}
-
-.movie-card,
-.photo-card {
-  margin: 0 10px;
-}
-
-.movies-section .carousel-item,
-.photos-section .carousel-item {
-  display: flex;
-  justify-content: center;
+/* Padding tambahan untuk menghindari tumpang tindih dengan navbar */
+.celeb-detail-container {
+  padding-top: 100px; /* Sesuaikan nilai ini dengan tinggi navbar */
 }

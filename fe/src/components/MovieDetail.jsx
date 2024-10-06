@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Container, Row, Col, Carousel, Form, Button } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import { apiKey } from "../data";
 
 const MovieDetailPage = () => {
   const { id } = useParams(); // Get the movie ID from the URL parameters
-  const [backdrops, setBackdrops] = useState([]);
   const [trailers, setTrailers] = useState([]);
   const [actors, setActors] = useState([]);
   const [recommendedMovies, setRecommendedMovies] = useState([]);
@@ -20,56 +19,37 @@ const MovieDetailPage = () => {
     content: "",
   });
 
+  // Tambahkan state untuk director, genres, dan country
+  const [director, setDirector] = useState(null);
+  const [genres, setGenres] = useState([]);
+  const [country, setCountry] = useState("");
+
   useEffect(() => {
     const fetchMovieData = async () => {
-      const imageUrl = `https://api.themoviedb.org/3/movie/${id}/images?api_key=${apiKey}`;
-      const trailerUrl = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${apiKey}`;
-      const actorsUrl = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${apiKey}`;
-      const recommendedUrl = `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${apiKey}`;
-      const movieUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`;
-      const reviewsUrl = `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${apiKey}`;
+      const movieUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&append_to_response=images,videos,credits,recommendations,reviews`;
 
       try {
-        const [
-          imageResponse,
-          trailerResponse,
-          actorResponse,
-          recommendedResponse,
-          movieResponse,
-          reviewsResponse,
-        ] = await Promise.all([
-          fetch(imageUrl),
-          fetch(trailerUrl),
-          fetch(actorsUrl),
-          fetch(recommendedUrl),
-          fetch(movieUrl),
-          fetch(reviewsUrl),
-        ]);
+        const movieResponse = await fetch(movieUrl);
+        if (!movieResponse.ok) throw new Error("Network response was not ok");
 
-        if (
-          !imageResponse.ok ||
-          !trailerResponse.ok ||
-          !actorResponse.ok ||
-          !recommendedResponse.ok ||
-          !movieResponse.ok ||
-          !reviewsResponse.ok
-        ) {
-          throw new Error("Network response was not ok");
-        }
-
-        const imageData = await imageResponse.json();
-        const trailerData = await trailerResponse.json();
-        const actorData = await actorResponse.json();
-        const recommendedData = await recommendedResponse.json();
         const movieData = await movieResponse.json();
-        const reviewsData = await reviewsResponse.json();
 
-        setBackdrops(imageData.backdrops.slice(0, 5)); // Limit to 5 backdrops
-        setTrailers(trailerData.results.slice(0, 3)); // Limit to 3 trailers
-        setActors(actorData.cast.slice(0, 6)); // Limit to 6 actors
-        setRecommendedMovies(recommendedData.results.slice(0, 5)); // Limit to 5 recommended movies
+        // Ambil data director, genres, dan country dari response
+        const directorData = movieData.credits.crew.find(
+          (member) => member.job === "Director"
+        );
+        const countryData = movieData.production_countries[0]?.name;
+        const genreData = movieData.genres;
+
         setMovie(movieData);
-        setReviews(reviewsData.results); // Set reviews from API response
+        setTrailers(movieData.videos.results.slice(0, 3)); // Limit to 3 trailers
+        setActors(movieData.credits.cast.slice(0, 6)); // Limit to 6 actors
+        setRecommendedMovies(movieData.recommendations.results.slice(0, 5)); // Limit to 5 recommended movies
+        setReviews(movieData.reviews.results); // Set reviews from API response
+
+        setDirector(directorData ? directorData.name : "Unknown");
+        setGenres(genreData || []);
+        setCountry(countryData || "Unknown");
 
         setLoading(false);
       } catch (error) {
@@ -101,58 +81,100 @@ const MovieDetailPage = () => {
   };
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  if (error || !movie)
+    return <p>Error: {error?.message || "Movie not found"}</p>;
 
   return (
     <div>
+      {/* Header Section */}
       <header
-        className="w-100 min-vh-100 d-flex align-items-center"
+        className="w-100 min-vh-100 d-flex align-items-center justify-content-center"
         style={{
           position: "relative",
           overflow: "hidden",
+          backgroundColor: "#000",
+          padding: "50px 0",
         }}
       >
-        <Carousel fade>
-          {backdrops.map((backdrop, index) => (
-            <Carousel.Item key={index}>
-              <div
+        <Container className="mt-5">
+          <Row className="d-flex align-items-center justify-content-center">
+            <Col lg={4} md={6} sm={12} className="text-center mb-4 mb-lg-0">
+              {movie.poster_path ? (
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                  alt={movie.title}
+                  className="img-fluid rounded shadow-lg"
+                  style={{
+                    maxHeight: "600px",
+                    objectFit: "cover",
+                    width: "100%",
+                  }} // Membuat gambar poster menyesuaikan lebar layar
+                />
+              ) : (
+                <p>No Poster Available</p>
+              )}
+            </Col>
+            <Col
+              lg={8}
+              md={12}
+              className="text-white d-flex flex-column align-items-start"
+            >
+              <h1
+                className="display-3 fw-bold"
                 style={{
-                  backgroundImage: `url('https://image.tmdb.org/t/p/original${backdrop.file_path}')`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  height: "100vh",
-                  width: "100vw",
+                  textShadow: "2px 2px 5px rgba(0, 0, 0, 0.7)",
+                  marginBottom: "20px",
+                  fontSize: "3rem", // Menyesuaikan ukuran font untuk responsif
                 }}
               >
-                <div
-                  className="d-flex align-items-center justify-content-center w-100 h-100"
-                  style={{
-                    background:
-                      "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%)",
-                  }}
+                {movie.original_title}{" "}
+                {movie.release_date ? movie.release_date.split("-")[0] : ""}
+              </h1>
+              <div className="d-flex align-items-center mb-3 flex-wrap">
+                <span
+                  className="badge bg-success me-2"
+                  style={{ fontSize: "1.2rem", marginBottom: "10px" }}
                 >
-                  <Container>
-                    <Row className="header-box d-flex align-items-center pt-lg-5">
-                      <Col lg="6">
-                        <h1 className="mb-4 fw-bold">
-                          {movie.original_title} <br />
-                          <span>{movie.tagline}</span>
-                        </h1>
-                        <p className="mb-4 text-truncate">{movie.overview}</p>
-                        <button className="btn btn-danger btn-lg rounded-1">
-                          Watch Now
-                        </button>
-                      </Col>
-                    </Row>
-                  </Container>
-                </div>
+                  {movie.vote_average}/10
+                </span>
+                {genres.map((genre) => (
+                  <span
+                    key={genre.id}
+                    className="badge bg-danger me-2"
+                    style={{ fontSize: "1.2rem", marginBottom: "10px" }}
+                  >
+                    {genre.name}
+                  </span>
+                ))}
               </div>
-            </Carousel.Item>
-          ))}
-        </Carousel>
+              <p
+                className="lead"
+                style={{
+                  lineHeight: "1.5",
+                  marginBottom: "20px",
+                  textAlign: "justify", // Justify text for better readability
+                }}
+              >
+                {movie.overview}
+              </p>
+              <div className="mb-2">
+                <strong>Director:</strong> {director}
+              </div>
+              <div className="mb-2">
+                <strong>Country:</strong> {country}
+              </div>
+              <div className="mb-4">
+                <strong>Release Date:</strong> {movie.release_date}
+              </div>
+              <Button variant="danger" className="btn-lg">
+                Watch Now
+              </Button>
+            </Col>
+          </Row>
+        </Container>
       </header>
 
-      {/* Trailer Section (Carousel) */}
+      {/* Trailer Section */}
       <Container className="mt-5">
         <h2 className="text-white">Trailers</h2>
         <Carousel>
@@ -237,36 +259,74 @@ const MovieDetailPage = () => {
 
       {/* Reviews Section */}
       <Container className="mt-5 reviews-section">
-        <h2 className="text-white">Reviews ({reviews.length})</h2>
+        <h2 className="text-white mb-4">Reviews ({reviews.length})</h2>
         {reviews.slice(0, visibleReviews).map((review) => (
           <div
             key={review.id}
-            className="review-item d-flex align-items-start mb-4"
+            className="review-item d-flex mb-4"
+            style={{
+              paddingBottom: "15px",
+              paddingTop: "15px",
+            }}
           >
-            <div className="review-avatar mr-3">
+            <div
+              className="review-avatar d-flex align-items-center justify-content-center"
+              style={{
+                width: "50px",
+                height: "50px",
+                backgroundColor: "#ccc",
+                borderRadius: "50%",
+                marginRight: "15px",
+                overflow: "hidden", // Memastikan konten tidak meluap dari kontainer lingkaran
+                flexShrink: "0", // Ini memastikan ukuran kontainer avatar tetap
+              }}
+            >
               {review.author_details.avatar_path ? (
                 <img
                   src={`https://image.tmdb.org/t/p/w45${review.author_details.avatar_path}`}
                   alt={review.author}
-                  className="rounded-circle"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover", // Memastikan gambar menyesuaikan kontainer tanpa distorsi
+                    borderRadius: "50%",
+                  }}
                 />
               ) : (
                 <div
-                  className="rounded-circle bg-secondary text-white d-flex justify-content-center align-items-center"
-                  style={{ width: "45px", height: "45px" }}
+                  className="text-white"
+                  style={{
+                    fontSize: "1.5rem",
+                    fontWeight: "bold",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    height: "100%",
+                    width: "100%",
+                  }}
                 >
                   {review.author[0].toUpperCase()}
                 </div>
               )}
             </div>
-            <div className="review-details">
-              <div className="review-author text-white fw-bold">
-                {review.author}
+            <div className="review-details flex-grow-1">
+              <div className="d-flex justify-content-between align-items-center mb-2">
+                <div className="review-author text-white fw-bold">
+                  {review.author}
+                </div>
+                <div
+                  className="review-date text-muted"
+                  style={{ fontSize: "0.85rem" }}
+                >
+                  {new Date(review.created_at).toLocaleString()}
+                </div>
               </div>
-              <div className="review-date text-muted">
-                {new Date(review.created_at).toLocaleString()}
+              <div
+                className="review-text text-white"
+                style={{ fontSize: "1rem", lineHeight: "1.5" }}
+              >
+                {review.content}
               </div>
-              <div className="review-text text-white">{review.content}</div>
             </div>
           </div>
         ))}

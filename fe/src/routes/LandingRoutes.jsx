@@ -1,17 +1,19 @@
 import { Routes, Route } from "react-router-dom";
 import HomePage from "../pages/Homepage";
-import MovieDetail from "../components/MovieDetail";
-import SeriesDetail from "../components/SeriesDetail";
-import CelebsDetail from "../components/CelebsDetail";
+import CelebsPage from "../pages/CelebsPage";
+import MoviesPage from "../pages/MoviesPage";
+import SeriesPage from "../pages/SeriesPage";
+import AwardsPage from "../pages/AwardsPage";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import SearchResultPage from "../pages/SearchResultPage";
 import ForgotPasswordPage from "../pages/ForgotPasswordPage";
 import Profile from "../pages/Profile";
-import MoviesPage from "../pages/MoviesPage";
-import SeriesPage from "../pages/SeriesPage";
-import AwardsPage from "../pages/AwardsPage";
-import CelebsPage from "../pages/CelebsPage";
+
+import MovieDetail from "../components/MovieDetail";
+import SeriesDetail from "../components/SeriesDetail";
+import CelebsDetail from "../components/CelebsDetail";
+
 
 function LandingRoutes() {
   return (
@@ -19,7 +21,7 @@ function LandingRoutes() {
       <Route path="/" element={<HomePage />} />
       <Route path="/movie/:id" element={<MovieDetail />} />
       <Route path="/series/:id" element={<SeriesDetail />} />
-      <Route path="/celebs/:id" element={<CelebsDetail />} />
+      <Route path="/celeb/:id" element={<CelebsDetail />} />
       <Route path="/celebs" element={<CelebsPage />} />
       <Route path="/movies" element={<MoviesPage />} />
       <Route path="/series" element={<SeriesPage />} />

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faYoutube } from "@fortawesome/free-brands-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { apiKey } from "../data";
 import "../styles/CelebsDetail.css"; // Import file CSS
 
@@ -72,60 +72,6 @@ const CelebsDetail = () => {
           <p>{celeb.biography}</p>
         </Col>
       </Row>
-
-      {/* Medias Section */}
-      <div className="medias-section mt-5">
-        <h2 className="section-title">MEDIAS</h2>
-        <div
-          className="movie-list"
-          style={{
-            display: "flex",
-            overflowX: "scroll",
-            padding: "10px 0",
-            gap: "10px",
-            whiteSpace: "nowrap",
-          }}
-        >
-          {movies.map((movie) => (
-            <div key={movie.id} className="movie-item">
-              <Link to={`/movie/${movie.id}`}>
-                <img
-                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                  alt={movie.title || movie.name}
-                  className="movie-poster"
-                />
-              </Link>
-              <div className="movie-info">
-                <h5>{movie.title || movie.name}</h5>
-                <p>{movie.release_date || movie.first_air_date}</p>
-
-                {/* Rating Circle */}
-                <div className="rating-container">
-                  <div
-                    className="rating-circle"
-                    style={{
-                      border: `5px solid ${movie.vote_average >= 7 ? "green" : "red"}`,
-                      borderColor: `conic-gradient(green ${movie.vote_average * 10}%, #ccc 0)`,
-                    }}
-                  >
-                    <span className="rating-text">{movie.vote_average}</span>
-                  </div>
-                </div>
-
-                {/* YouTube Search Icon */}
-                <a
-                  href={`https://www.youtube.com/results?search_query=${encodeURIComponent(movie.title || movie.name)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="movie-info-icon"
-                >
-                  <FontAwesomeIcon color="#dc3545" icon={faYoutube} size="2x" />
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
     </Container>
   );
 };

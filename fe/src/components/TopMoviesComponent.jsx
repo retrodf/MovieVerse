@@ -63,10 +63,11 @@ const TopRatedMovies = () => {
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                 alt={movie.title}
                 className="movie-poster"
+                style={{ width: '100%', borderRadius: '10px', transition: 'transform 0.3s' }}
               />
             </Link>
             <div className="movie-info">
-              <h5>{movie.title}</h5>
+              <h5 style={styles.movieTitle}>{movie.title}</h5> {/* Judul film dengan wrapping */}
               <p>{movie.release_date}</p>
               <div className="rating-container">
                 <div
@@ -93,6 +94,20 @@ const TopRatedMovies = () => {
       </div>
     </div>
   );
+};
+
+// Styles for the component
+const styles = {
+  movieTitle: {
+    textAlign: 'center',       // Pusatkan teks
+    whiteSpace: 'normal',      // Izinkan teks membungkus
+    overflow: 'hidden',        // Sembunyikan overflow
+    textOverflow: 'ellipsis',  // Tambahkan ellipsis jika terlalu panjang
+    wordWrap: 'break-word',    // Pecah kata jika terlalu panjang
+    display: '-webkit-box',    // Kotak untuk text clamping (opsional)
+    WebkitLineClamp: 2,        // Batas 2 baris (opsional)
+    WebkitBoxOrient: 'vertical', // Vertikal orientasi untuk clamping (opsional)
+  },
 };
 
 export default TopRatedMovies;

@@ -11,27 +11,27 @@ const CMSCountries = () => {
   const [loading, setLoading] = useState(true); // Tambahkan loading state
   const [form] = Form.useForm();
 
-  // Fetch data dari backend
-  useEffect(() => {
-    const fetchCountries = async () => {
-      try {
-        const response = await axios.get('http://localhost:8000/cms/countries'); // Pastikan URL backend benar
-        setCountriesData(
-          response.data.map((country) => ({
-            key: country.country_id, // Sesuaikan key dengan field dari database (misal: country_id)
-            country: country.country_name, // Pastikan nama field sesuai dengan database (misal: country_name)
-            isDefault: country.is_default === 1 ? true : false // Pastikan nama field sesuai
-          }))
-        );
-        setLoading(false); // Set loading ke false setelah data diterima
-      } catch (error) {
-        console.error('Error fetching countries:', error);
-        setLoading(false); // Set loading ke false jika ada error
-      }
-    };
+// Fetch data dari backend
+useEffect(() => {
+  const fetchCountries = async () => {
+    try {
+      const response = await axios.get('http://localhost:8000/cms/countries');
+      setCountriesData(
+        response.data.map((country) => ({
+          key: country.country_id,  // Gunakan country_id sebagai key
+          country: country.name,  // Tampilkan nama negara
+          isDefault: country.is_default === 1 ? true : false  // Konversi flag is_default
+        }))
+      );
+      setLoading(false);  // Set loading ke false setelah data diterima
+    } catch (error) {
+      console.error('Error fetching country', error);
+      setLoading(false);  // Set loading ke false jika ada error
+    }
+  };
 
-    fetchCountries();
-  }, []);
+  fetchCountries();  // Memanggil fungsi fetch
+}, []);
 
   const handleEdit = (record) => {
     setEditingCountry(record);
