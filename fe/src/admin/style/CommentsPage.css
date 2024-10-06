@@ -1,0 +1,77 @@
+* {
+    font-family: "Poppins", sans-serif;
+  }
+  
+  :root {
+    --primary-color: #f6f8fd;
+    --secondary-color: #dc3545;
+    --color-text: #231942;
+    --navbar-color: #ffffff;
+    --navbar-color-text: #000000;
+  }
+
+  .comments-page {
+    padding: 20px;
+    background-color: #f5f5f5;
+  }
+  
+  .comments-filters {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+  }
+  
+  .filter-item {
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .filter-item span {
+    margin-right: 10px;
+    font-weight: bold;
+  }
+  
+  .comment-cell p {
+    margin: 0;
+  }
+  
+  .custom-table .ant-table-thead > tr > th {
+    text-align: center;
+  }
+  
+  .comments-actions {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .ant-btn-primary {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+  }
+  
+  .ant-btn-primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+  }
+  
+  .ant-btn-danger {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+  }
+  
+  .ant-btn-danger:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+  }
+  
+  .ant-checkbox-wrapper {
+    margin-right: 10px;
+  }
+  
+  .ant-btn-danger {
+    color: white !important;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}

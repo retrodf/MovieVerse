@@ -1,0 +1,52 @@
+*{
+    font-family: "Poppins", sans-serif;
+}
+
+:root {
+    --primary-color: #f6f8fd;
+    --secondary-color: #dc3545;
+    --color-text: #231942;
+    --navbar-color: #ffffff;
+    --navbar-color-text: #000000;
+  } 
+
+.dropdown-filter {
+    margin: 10px 10px;
+    min-width: 100px;
+  
+    .dropdown-toggle {
+      background-color: var(--secondary-color);
+      border: none;
+      color: var(--primary-color);
+      font-weight: bold;
+      padding: 10px 15px;
+      border-radius: 4px;
+      margin: 10px 10px;
+      min-width: 100px;
+    }
+  
+    .dropdown-menu {
+      background-color: var(--primary-color);
+      border: 1px solid var(--navbar-color-text);
+      border-radius: 4px;
+      padding: 10px 0;
+  
+      .dropdown-item {
+        color: var(--navbar-color-text);
+        padding: 8px 15px;
+        font-size: 14px;
+        &:hover {
+          color: var(--primary-color);
+        }
+  
+        &.select {
+          background-color: var(--secondary-color);
+        }
+      }
+    }
+  
+    .label {
+      font-size: 16px;
+    }
+  }
+  

@@ -1,0 +1,54 @@
+* {
+    font-family: "Poppins", sans-serif;
+  }
+  
+  :root {
+    --primary-color: #f6f8fd;
+    --secondary-color: #dc3545;
+    --color-text: #231942;
+    --navbar-color: #ffffff;
+    --navbar-color-text: #000000;
+  }
+
+.actors-page {
+    padding: 20px;
+    background-color: #f5f5f5;
+  }
+  
+  .actors-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .ant-btn-primary {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+  }
+  
+  .ant-btn-primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+  }
+  
+  .custom-table .ant-table-thead > tr > th {
+    text-align: center;
+  }
+  
+  .ant-modal-title {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .ant-form-item-label > label {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .custom-table img {
+    border-radius: 50%;
+  }
+
+  .ant-btn-danger .anticon-delete {
+    color: white; /* Ubah warna ikon menjadi putih */
+}
+  
