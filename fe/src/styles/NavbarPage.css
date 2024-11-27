@@ -1,0 +1,191 @@
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --primary-color: #f6f8fd;
+  --secondary-color: #dc3545;
+  --color-text: #231942;
+}
+
+/* Navbar styles */
+.navbar {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, height 0.3s ease;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  font-weight: 500;
+}
+
+.navbar-active {
+  background-color: var(--secondary-color);
+  box-shadow: 0 2px 10px var(--secondary-color);
+  height: 60px;
+}
+
+.navbar .nav-link:hover {
+  color: var(--secondary-color);
+}
+
+.navbar .nav-link {
+  color: #fff;
+  margin-right: 20px;
+  transition: color 0.3s ease;
+}
+
+.navbar .nav-link.active {
+  color: var(--secondary-color) !important;
+}
+
+/* Style for search bar elements */
+.search-group {
+  display: flex;
+  flex-grow: 1;
+  max-width: 500px;
+  height: 38px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-right: 20px;
+}
+
+.search-input {
+  border: 1px solid var(--secondary-color) !important; /* Membuat batas agar terlihat */
+  border-left: none;
+  border-right: none;
+  height: 100%;
+  padding-left: 15px;
+  border-radius: 0;
+  outline: none;
+}
+
+.search-button {
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  border: 1px solid var(--secondary-color);
+  border-left: none;
+  height: 100%;
+  padding: 0 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.search-button i {
+  font-size: 16px;
+}
+
+/* Profile icon and dropdown */
+.profile-icon {
+  font-size: 1.5rem;
+}
+
+.profile-dropdown .dropdown-item {
+  color: var(--secondary-color);
+}
+
+.profile-dropdown .dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+
+/* Login button */
+.login-btn-navbar {
+  height: 35px;
+  background-color: var(--secondary-color) !important;
+  border: none !important;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #fff;
+  margin-left: 20px;
+  padding: 0 20px;
+  text-align: center;
+  line-height: 35px;
+  white-space: nowrap;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn-navbar:hover {
+  background-color: #ad2532 !important;
+}
+
+.logo-img {
+  height: 30px;
+  max-height: 30px;
+  object-fit: contain;
+}
+
+/* Responsive Navbar Design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .navbar-collapse {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .search-group {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .profile-icon {
+    font-size: 1.2rem;
+  }
+
+  .login-btn-navbar {
+    width: 100%; /* Lebar tombol penuh di mobile */
+    margin-top: 10px;
+  }
+
+  .logo-img {
+    height: 25px;
+  }
+}
+
+/* Target resolusi tablet (ukuran iPad Air) */
+@media (max-width: 1024px) {
+  .navbar {
+    height: auto;
+    background-color: var(--secondary-color);
+  }
+
+  .navbar-collapse {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .search-group {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .navbar-toggler {
+    background-color: var(--secondary-color);
+    border: none;
+  }
+
+  .search-button,
+  .search-input {
+    height: 35px;
+  }
+
+  .category-dropdown {
+    height: 35px;
+  }
+
+  .logo-img {
+    height: 25px;
+  }
+
+  .profile-icon {
+    font-size: 1.4rem;
+  }
+}

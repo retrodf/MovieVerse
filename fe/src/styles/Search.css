@@ -1,0 +1,225 @@
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+/* Variabel Root */
+:root {
+  --primary-color: #f6f8fd;
+  --secondary-color: #dc3545;
+  --color-text: #231942;
+  --navbar-color: #ffffff;
+  --navbar-color-text: #000000;
+}
+
+/* Main Content */
+.main-content {
+  padding: 20px;
+}
+
+/* Search Result Page */
+.search-result-page {
+  padding: 0px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Search Field */
+.search-field {
+  border: 2px solid var(--primary-color);
+  padding: 12px;
+  font-size: 16px;
+  background-color: transparent;
+  color: #fff;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 100%;
+}
+
+.search-field::placeholder {
+  color: #a0a0a0;
+}
+
+.search-field:focus {
+  outline: none;
+  border: 2px solid var(--secondary-color);
+  background-color: transparent;
+  color: #fff;
+}
+
+.search-field:focus-visible {
+  outline: none;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+/* Filter Sidebar */
+.filter-sidebar {
+  height: auto;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #2e2e2e;
+  max-width: 100%;
+}
+
+.filter-sidebar h5 {
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 10px;
+}
+
+.filter-sidebar .form-group {
+  margin-bottom: 20px;
+}
+
+.filter-sidebar .form-label {
+  color: #fff;
+  font-weight: 500;
+}
+
+.filter-sidebar .form-select,
+.filter-sidebar .form-control {
+  background-color: #444;
+  color: #fff;
+  border-radius: 5px;
+  border: 1px solid #666;
+}
+
+.filter-sidebar .form-select:focus,
+.filter-sidebar .form-control:focus {
+  outline: none;
+  box-shadow: none;
+  border: 1px solid var(--secondary-color);
+}
+
+.filter-sidebar button {
+  width: 100%;
+  padding: 10px;
+  font-weight: bold;
+  background-color: var(--secondary-color);
+  border: none;
+  border-radius: 5px;
+}
+
+/* Movie Card */
+.movie-card,
+.celeb-card {
+  border-radius: 10px;
+  background-color: #2e2e2e;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.movie-poster,
+.celeb-poster {
+  border-radius: 8px;
+}
+
+.movie-description,
+.celeb-description {
+  font-size: 14px;
+  color: #aaa;
+}
+
+.movie-info,
+.celeb-info {
+  font-size: 14px;
+}
+
+.movie-card h5,
+.celeb-card h5 {
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Warning Text */
+.text-warning {
+  font-size: 18px;
+}
+
+/* Filter Buttons */
+.filter-button {
+  width: 100%;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Clear Button */
+.clear-button {
+  background-color: #444;
+  color: #fff;
+  border: 1px solid var(--secondary-color);
+  transition: all 0.3s ease;
+}
+
+.clear-button:hover {
+  background-color: #b32a38;
+  color: #fff;
+}
+
+.clear-button:focus,
+.clear-button:active {
+  background-color: #b32a38;
+  color: #ffffff;
+  border: 1px solid #b32a38;
+  box-shadow: none;
+}
+
+/* Submit Button */
+.submit-button {
+  background-color: var(--secondary-color);
+  color: #fff;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #b32a38;
+}
+
+.submit-button:focus,
+.submit-button:active {
+  background-color: #b32a38;
+  color: #fff;
+  box-shadow: none;
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 576px) {
+  .movie-list-search {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Responsif untuk tablet */
+@media (min-width: 577px) and (max-width: 1024px) {
+  .movie-list-search {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Responsif untuk desktop */
+@media (min-width: 1025px) {
+  .movie-list-search {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 768px) {
+  .movie-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Responsif untuk tablet */
+@media (min-width: 769px) and (max-width: 1200px) {
+  .movie-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

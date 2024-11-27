@@ -1,0 +1,224 @@
+/* Universal Box Sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --primary-color: #f6f8fd;
+  --secondary-color: #dc3545;
+  --color-text: #231942;
+}
+
+/* Container dan Wrapper */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--secondary-color);
+}
+
+.content-wrapper {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  max-width: 1450px;
+  background-color: #202020;
+  overflow: hidden;
+}
+
+.left-content {
+  width: 65%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.background-image {
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.right-content {
+  margin: 2% 5%;
+  width: 40%;
+  max-width: 400px;
+  color: #fff;
+}
+
+/* Formulir Login */
+.right-content h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: var(--secondary-color);
+}
+
+.right-content p {
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.right-content a {
+  color: #DA5151;
+  text-decoration: none;
+}
+
+.right-content a:hover {
+  text-decoration: underline;
+}
+
+.input-box {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin-bottom: 30px;
+}
+
+.input-box input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  font-size: 16px;
+  color: #fff;
+  padding: 0 45px 0 20px;
+}
+
+.icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer; /* Tambahkan ini untuk memberi tahu pengguna bahwa ikon bisa diklik */
+}
+
+
+.error-message {
+  color: red;
+}
+
+.remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+/* Tombol Login */
+.login-btn {
+  width: 100%;
+  height: 35px;
+  background-color: var(--secondary-color) !important;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #ad2532 !important;
+}
+
+.social-login {
+  text-align: center;
+  margin-top: 10px; /* Mengurangi jarak di atas */
+}
+
+.social-login p {
+  margin-bottom: 5px; /* Mengurangi jarak antara teks dan tombol */
+  font-size: 14px;
+  color: #ccc;
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px; /* Jika ada tombol lain, beri jarak antar tombol */
+}
+
+/* Tombol Google */
+.google-btn {
+  background-color: var(--primary-color) !important;
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.google-btn:hover {
+  background-color: #ffffffd5 !important;
+}
+
+/* Responsiveness */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .content-wrapper {
+    flex-direction: column;
+    border-radius: 0;
+  }
+
+  .left-content {
+    width: 100%;
+    height: 50vh;
+    border-radius: 0;
+  }
+
+  .right-content {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .left-content {
+    height: 40vh;
+  }
+
+  .right-content {
+    padding: 20px;
+  }
+
+  .right-content h2 {
+    font-size: 28px;
+  }
+
+  .input-box input {
+    font-size: 14px;
+  }
+
+  .right-content button {
+    font-size: 14px;
+    height: 40px;
+  }
+}

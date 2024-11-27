@@ -1,0 +1,70 @@
+*{
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --primary-color: #f6f8fd;
+  --secondary-color: #dc3545;
+  --color-text: #231942;
+  --navbar-color: #ffffff;
+  --navbar-color-text: #000000;
+}
+
+/* CelebsDetail.css */
+
+/* General container style */
+.celeb-detail-container {
+  color: #fff;
+}
+
+.movie-list {
+  display: flex;
+  overflow-x: scroll;
+  padding: 10px 0;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.movie-item {
+  width: 150px;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.movie-poster {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.movie-poster:hover {
+  transform: scale(1.05);
+}
+
+.movie-info {
+  color: white;
+  margin-top: 10px;
+}
+
+.movie-info h5 {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.movie-info p {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.celeb-image {
+  width: 15%; /* Sesuaikan persentase untuk memperbesar atau memperkecil gambar */
+  max-width: 200px; /* Bisa diatur agar gambar tidak melebihi ukuran tertentu */
+  height: auto; /* Agar gambar tetap proporsional */
+  border-radius: 10px; /* Tetap mempertahankan sudut melengkung */
+}
+
+/* Padding tambahan untuk menghindari tumpang tindih dengan navbar */
+.celeb-detail-container {
+  padding-top: 100px; /* Sesuaikan nilai ini dengan tinggi navbar */
+}

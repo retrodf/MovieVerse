@@ -1,0 +1,68 @@
+*{
+    font-family: "Poppins", sans-serif;
+}
+
+:root {
+    --primary-color: #f6f8fd;
+    --secondary-color: #dc3545;
+    --color-text: #231942;
+    --navbar-color: #ffffff;
+    --navbar-color-text: #000000;
+  }
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .pagination-btn {
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    margin: 0 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .pagination-btn:hover {
+    background-color: transparent !important;
+    color: white;
+    border-color: var(--secondary-color) !important;
+  }
+  
+  .pagination-btn.active {
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+    background-color: transparent;
+  }
+  
+  .pagination-arrow {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    margin: 0 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+
+  .pagination-arrow:hover{
+    background-color: #bd2d3c;
+    color: white;
+  }
+
+  .pagination-arrow:active {
+    background-color: var(--secondary-color); /* Ubah warna menjadi biru saat diklik */
+    outline: none;
+  }
+  
+  .pagination-arrow:disabled {
+    background-color: grey;
+  }
+  
+  .pagination-ellipsis {
+    margin: 0 5px;
+  }
+  

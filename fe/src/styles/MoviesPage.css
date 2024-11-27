@@ -1,0 +1,256 @@
+:root {
+  --primary-color: #f6f8fd;
+  --secondary-color: #dc3545;
+  --color-text: #231942;
+}
+
+/* Styling untuk PopularMovies component */
+.popular-movies-container {
+  font-family: "Roboto, Helvetica, Arial, sans-serif";
+}
+
+.top-rated-movies-container {
+  font-family: "Roboto, Helvetica, Arial, sans-serif";
+}
+
+.popular-movies-title {
+  font-weight: bold;
+  border-bottom: 5px solid #dc3545;
+  display: inline-block;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.top-rated-movies-title {
+  font-weight: bold;
+  border-bottom: 5px solid #dc3545;
+  display: inline-block;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.movie-list {
+  display: flex;
+  overflow-x: scroll;
+  padding: 10px 0;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.movie-item {
+  position: relative;
+  flex: 0 0 auto;
+  width: 200px;
+  text-align: center;
+}
+
+.movie-poster {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.movie-info {
+  margin-top: 10px;
+}
+
+.rating-container {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.rating-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.movie-info-icon {
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.movie-info h5 {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.2; /* Mengatur jarak antar baris */
+  overflow: hidden; /* Menyembunyikan teks yang keluar dari batas */
+  text-overflow: ellipsis; /* Menambahkan titik tiga (...) jika teks terlalu panjang */
+  white-space: normal; /* Membuat teks bisa terpecah ke baris baru */
+  word-wrap: break-word; /* Memecah kata jika terlalu panjang */
+  max-height: 3.6em; /* Batas maksimal untuk dua baris teks */
+}
+
+.actor-link {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+.actor-link:hover {
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+
+.detail-movies-title {
+  font-weight: bold;
+  color: var(--primary-color);
+  border-bottom: 5px solid #dc3545;
+  display: inline-block;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+/* Fix for movie detail section */
+.movie-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.movie-details .movie-poster {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.movie-info {
+  padding: 20px;
+  max-width: 100%;
+}
+
+.movie-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+.movie-rating {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.movie-description {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  max-height: 120px; /* Limit the height for text */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.movie-metadata {
+  margin-bottom: 20px;
+}
+
+.movie-metadata div {
+  font-size: 1rem;
+}
+
+ /* Ensure alignment */
+ .movie-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.movie-title {
+  margin-top: 0;
+  margin-bottom: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.movie-rating {
+  display: inline-block;
+  background-color: #28a745;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Carousel styling */
+.trailer-iframe {
+  /* Tambahkan style yang Anda inginkan untuk iframe */
+  transition: all 0.3s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Sembunyikan panah default Bootstrap */
+/* .carousel-control-prev,
+.carousel-control-next {
+  display: none;
+} */
+
+/* Wrapper untuk Carousel */
+.carousel-wrapper {
+  position: relative;
+}
+
+/* Styling untuk navigasi carousel kustom */
+/* Pastikan panah navigasi berada di luar area trailer */
+.trailer-carousel .carousel-control-prev-icon,
+.trailer-carousel .carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5); /* Warna panah dengan transparansi */
+  border-radius: 50%; /* Bentuk bulat */
+  width: 40px;
+  height: 40px;
+}
+
+.custom-prev-icon {
+  position: absolute;
+  left: -15px; /* Atur posisi panah kiri di luar container */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.custom-next-icon {
+  position: absolute;
+  right: -60px; /* Atur posisi panah kanan di luar container */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Efek hover untuk panah */
+.custom-prev-left:hover, 
+.custom-next-right:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.submit-review-btn {
+  background-color: var(--secondary-color); /* Warna merah, ganti sesuai kebutuhan */
+  color: #fff; /* Warna teks putih */
+  border: none;
+  padding: 6px 10px;
+  font-weight: bold;
+}
+
+.submit-review-btn:hover {
+  background-color: #c82435; /* Warna merah lebih gelap untuk efek hover */
+}
+
+@media (max-width: 768px) {
+  .custom-prev-icon {
+    left: -40px; /* Kurangi jarak untuk layar kecil */
+  }
+
+  .custom-next-icon {
+    right: -40px; /* Kurangi jarak untuk layar kecil */
+  }
+}

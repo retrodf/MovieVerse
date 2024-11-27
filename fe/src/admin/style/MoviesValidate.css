@@ -1,0 +1,67 @@
+* {
+    font-family: "Poppins", sans-serif;
+}
+
+:root {
+    --primary-color: #f6f8fd;
+    --secondary-color: #dc3545;
+    --color-text: #231942;
+    --navbar-color: #ffffff;
+    --navbar-color-text: #000000;
+}
+
+.movies-validate-page {
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.filters {
+  display: flex;
+  gap: 20px;
+}
+
+.synopsis-cell {
+  white-space: pre-line;
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.custom-table .ant-table-thead > tr > th {
+  text-align: center;
+}
+
+.ant-btn-primary {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.ant-btn-primary:hover {
+  background-color: #c62636;
+}
+
+.ant-modal-title {
+  font-family: 'Poppins', sans-serif;
+}
+
+.ant-form-item {
+  margin-bottom: 16px;
+}
+
+.genre-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px; /* Jarak antar elemen */
+  padding: 10px;
+}
+
+.genre-checkbox-item {
+  display: flex;
+  align-items: center;
+}

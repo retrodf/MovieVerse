@@ -1,0 +1,135 @@
+/* Synopsis container */
+.synopsis-container {
+  max-height: 150px; /* Batasi tinggi container */
+  overflow: hidden; /* Jika terlalu panjang, sembunyikan */
+  text-overflow: ellipsis; /* Tambahkan ellipsis untuk menandakan ada teks yang disembunyikan */
+}
+
+.synopsis-text {
+  line-height: 1.6; /* Atur jarak antar baris agar lebih nyaman dibaca */
+  font-size: 16px;
+  color: #f1f1f1;
+  margin-bottom: 10px;
+}
+
+.carousel-item {
+  height: 100vh; /* Pastikan carousel memenuhi layar */
+  display: flex;
+  align-items: center;
+}
+
+.carousel-item img {
+  object-fit: cover; /* Isi gambar secara proporsional */
+}
+
+.header-title {
+  font-size: 3rem;
+  color: #fff;
+  margin-bottom: 1rem;
+  max-width: 80%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* Atur posisi arrow navigasi carousel */
+.carousel-control-prev, 
+.carousel-control-next {
+  width: 5%; /* Perkecil lebar area klik arrow */
+}
+
+.carousel-control-prev {
+  left: -30px; /* Geser ke kiri */
+}
+
+.carousel-control-next {
+  right: 20px; /* Geser ke kanan */
+}
+
+.movie-list::-webkit-scrollbar {
+  display: none;
+}
+
+.movie-item {
+  position: relative;
+  display: inline-block;
+  min-width: 250px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #333;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.movie-poster {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.movie-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  text-align: center;
+  border-radius: 8px;
+  height: 100%;
+  pointer-events: none;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.movie-item:hover .movie-info {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.rating-container {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.rating-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 5px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background: #333;
+}
+
+.rating-text {
+  position: absolute;
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.logo-container {
+  max-height: 100px;
+}
+
+.logo-img {
+  height: 120px;
+  object-fit: contain;
+}

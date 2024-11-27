@@ -1,0 +1,128 @@
+* {
+    font-family: "Poppins", sans-serif;
+}
+
+:root {
+    --primary-color: #f6f8fd;
+    --secondary-color: #dc3545;
+    --color-text: #231942;
+    --navbar-color: #ffffff;
+    --navbar-color-text: #000000;
+}
+
+.ant-layout-sider.sidebarCMS {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #001529;
+    display: flex;  
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+
+.logoCMS {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    padding: 10px;
+    background-color: #001529; /* Warna untuk logo background */
+}
+
+.logoCMS-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    background: var(--navbar-color-text);
+}
+
+.menuCMS {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    font-size: 1rem;
+}
+
+.menuCMS .ant-menu-item,
+.menuCMS .ant-menu-submenu-title {
+    padding: 10px 10px;
+    transition: background-color 0.3s ease;
+}
+
+.menuCMS .ant-menu-item:hover,
+.menuCMS .ant-menu-submenu-title:hover {
+    background-color: #ff4d4f; /* Warna hover untuk item menu */
+    color: #fff; /* Teks putih saat hover */
+}
+
+.menuCMS .ant-menu-item-selected {
+    background-color: var(--secondary-color) !important;
+    color: #ffffff !important;
+}
+
+.menuCMS .ant-menu-item-selected .anticon,
+.menuCMS .ant-menu-item-selected .ant-menu-title-content {
+    color: #ffffff !important;
+}
+
+.contentCMS {
+    padding: 20px;
+    min-height: 100vh;
+    background-color: #f0f2f5; /* Background content */
+}
+
+.toggle-theme-btn {
+    position: absolute;
+    bottom: 30px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.toggle {
+    margin-left: 15px;
+}
+
+/* Responsivitas untuk ukuran layar kecil */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 80px;
+    }
+
+    .menu-bar .ant-menu-item,
+    .menu-bar .ant-menu-submenu-title {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+
+    .logo {
+        padding: 5px;
+    }
+
+    .toggle-theme-btn {
+        bottom: 10px;
+        left: 10px;
+    }
+}
+
+/* Style untuk content CMS agar lebih rapi */
+.ant-layout-content {
+    margin-left: 250px; /* Sesuaikan dengan lebar sidebar */
+    padding: 20px;
+    min-height: 100vh;
+    background-color: #f0f2f5; /* Background content */
+}
+
+@media (max-width: 768px) {
+    .ant-layout-content {
+        margin-left: 80px; /* Lebar sidebar yang di-collapse di layar kecil */
+    }
+}
