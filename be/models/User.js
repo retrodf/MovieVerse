@@ -25,7 +25,7 @@ User.init(
     },
     password: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     role: {
       type: DataTypes.STRING,
@@ -52,13 +52,22 @@ User.init(
       allowNull: true,
     },
     resetPasswordExpires: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.DATE,
       allowNull: true,
     },
     created_at: {
       type: DataTypes.DATEONLY,
       defaultValue: DataTypes.NOW,
     },
+    updated_at: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
+    },
+    googleId: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },    
   },
   {
     sequelize,

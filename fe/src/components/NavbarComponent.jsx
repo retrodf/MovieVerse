@@ -10,21 +10,30 @@ const NavbarComponent = () => {
   const navigate = useNavigate();
 
   // Cek apakah token JWT ada di localStorage
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (token) {
+  //     setIsAuth(true);
+  //   } else {
+  //     setIsAuth(false);
+  //   }
+  // }, []);
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      setIsAuth(true);
+      setIsAuth(true); // Jika token ada, set isAuth ke true
     } else {
-      setIsAuth(false);
+      setIsAuth(false); // Jika tidak ada token, set isAuth ke false
     }
   }, []);
+  
 
   // Fungsi untuk logout
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    setIsAuth(false);
-    navigate("/login");
-  };
+    localStorage.removeItem("token");  // Hapus token dari localStorage
+    setIsAuth(false);  // Set isAuth ke false
+    navigate("/login");  // Arahkan ke halaman login
+  };  
 
   // Mengubah warna navbar saat scroll
   const changeBackgroundColor = () => {

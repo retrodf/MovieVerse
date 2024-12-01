@@ -155,18 +155,25 @@
   background-color: #ad2532 !important;
 }
 
-.error-border {
-  border: 2px solid red !important;
+.input-error input {
+  border-color: #dc3545 !important;
 }
 
-.success-text {
-  color: green;
+.custom-popover .popover-body {
+  display: flex;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 14px;
+  border-radius: 6px;
+  padding: 9px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 100;
 }
 
-.error-text {
-  color: red;
-  font-size: 0.85rem;
-  margin-top: 5px;
+.custom-popover {
+  max-width: 300px;
 }
 
 /* Responsive Styles */

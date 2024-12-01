@@ -64,8 +64,14 @@ const MovieDetailPage = () => {
 
         // Fungsi untuk mengubah URL menjadi format embed YouTube
         const convertToEmbedUrl = (url) => {
-          const match = url.match(/watch\?v=([\w-]+)/);
-          return match ? `https://www.youtube.com/embed/${match[1]}` : url;
+          const match = url.match(
+            /(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([\w-]+)/
+          );
+          if (match) {
+            return `https://www.youtube.com/embed/${match[1]}`;
+          }
+          console.warn("Invalid YouTube URL:", url);
+          return url;
         };
 
         // Konversi URL MovieVideos
@@ -304,32 +310,20 @@ const MovieDetailPage = () => {
             >
               {trailers.map((trailer) => (
                 <Carousel.Item key={trailer.id}>
-                  <div
-                    className="embed-responsive"
+                  <iframe
+                    className="trailer-iframe"
+                    src={trailer.url}
+                    title={trailer.title || "Trailer"}
+                    allowFullScreen
                     style={{
-                      position: "relative",
-                      paddingBottom: "56.25%",
-                      height: 0,
-                      overflow: "hidden",
-                      maxWidth: "100%",
-                      background: "#000",
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      width: "100%",
+                      height: "100%",
+                      border: 0,
                     }}
-                  >
-                    <iframe
-                      className="trailer-iframe"
-                      src={trailer.url}
-                      title={trailer.title || "Trailer"}
-                      allowFullScreen
-                      style={{
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        width: "100%",
-                        height: "100%",
-                        border: 0,
-                      }}
-                    ></iframe>
-                  </div>
+                  ></iframe>
                 </Carousel.Item>
               ))}
             </Carousel>

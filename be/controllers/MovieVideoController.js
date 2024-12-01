@@ -25,8 +25,9 @@ class MovieVideoController {
 
       // Fetch movie dan sertakan MovieVideos dengan alias
       const movie = await Movie.findByPk(movieId, {
-        include: [{ model: MovieVideo, as: "MovieVideos" }], // Tambahkan "as"
+        include: [{ model: MovieVideo, as: "MovieVideos" }],
       });
+      console.log("Fetched MovieVideos:", movie.MovieVideos);      
 
       if (!movie) {
         return res.status(404).json({ message: "Movie not found" });

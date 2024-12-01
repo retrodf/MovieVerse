@@ -44,11 +44,9 @@ exports.createUser = async (req, res) => {
   try {
     // Tetapkan peran sebagai 'user' secara otomatis
     req.body.role = "user";
-
+    
     const newUser = await User.create(req.body);
-    res
-      .status(201)
-      .json({ message: "User berhasil ditambahkan", data: newUser });
+    res.status(201).json({ message: "User berhasil ditambahkan", data: newUser });
   } catch (err) {
     console.error("Error creating user:", err);
     res.status(500).json({ message: "Error creating user", error: err });
@@ -63,9 +61,9 @@ exports.updateUser = async (req, res) => {
 
     // Hapus field role dari request body agar tidak diubah
     delete req.body.role;
-
+  
     // logika untuk mengatur isSuspended
-    if (typeof req.body.isSuspended !== "undefined") {
+    if (typeof req.body.isSuspended !== 'undefined') {
       user.isSuspended = req.body.isSuspended;
     }
 
@@ -95,9 +93,7 @@ exports.deleteUser = async (req, res) => {
     // Cegah penghapusan admin utama
     const mainAdminId = 1; // Ganti dengan ID atau atribut unik admin utama
     if (user.id === mainAdminId) {
-      return res
-        .status(403)
-        .json({ message: "Admin utama tidak bisa dihapus." });
+      return res.status(403).json({ message: "Admin utama tidak bisa dihapus." });
     }
 
     await user.destroy();
@@ -107,6 +103,7 @@ exports.deleteUser = async (req, res) => {
     res.status(500).json({ message: "Error deleting user", error: err });
   }
 };
+
 
 // Fungsi Registrasi
 exports.register = async (req, res) => {
@@ -141,7 +138,13 @@ exports.register = async (req, res) => {
     });
   } catch (error) {
     console.error("Error registrasi:", error);
-    res.status(500).json({ message: "Gagal registrasi." });
+    // Mengirimkan objek error dengan pesan error
+    res.status(500).json({
+      message: "Gagal registrasi.",
+      error: {
+        message: error.message,  // Mengirim pesan error yang tepat
+      },
+    });
   }
 };
 
@@ -175,23 +178,17 @@ exports.verifyEmail = async (req, res) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const user = await User.findOne({ where: { email: decoded.userId } });
     if (!user) {
-      return res
-        .status(400)
-        .json({ message: "Token tidak valid atau sudah kedaluwarsa." });
+      return res.status(400).json({ message: "Token tidak valid atau sudah kedaluwarsa." });
     }
 
     user.isVerified = true;
     user.verificationToken = null;
     await user.save();
 
-    res
-      .status(200)
-      .json({ message: "Email berhasil diverifikasi. Silakan login." });
+    res.status(200).json({ message: "Email berhasil diverifikasi. Silakan login." });
   } catch (error) {
     console.error("Error saat verifikasi email:", error);
-    res
-      .status(400)
-      .json({ message: "Token tidak valid atau sudah kedaluwarsa." });
+    res.status(400).json({ message: "Token tidak valid atau sudah kedaluwarsa." });
   }
 };
 
@@ -213,13 +210,13 @@ exports.login = async (req, res) => {
       return res.status(403).json({ message: "Akun ini ditangguhkan." });
     }
 
+    if (!user.isVerified) {
+      return res.status(403).json({ message: "Email belum diverifikasi" });
+    }
+
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res.status(401).json({ message: "Password salah" });
-    }
-
-    if (!user.isVerified) {
-      return res.status(403).json({ message: "Email belum diverifikasi" });
     }
 
     const token = jwt.sign(
@@ -244,24 +241,29 @@ exports.login = async (req, res) => {
 // Fungsi untuk lupa password
 exports.forgotPassword = async (req, res) => {
   const { email } = req.body;
+
+  if (!email) {
+    return res.status(400).json({ message: "Email diperlukan." });
+  }
+
   try {
     const user = await User.findOne({ where: { email } });
+
     if (!user) {
       return res.status(404).json({ message: "Email tidak ditemukan." });
     }
 
     const resetToken = crypto.randomBytes(32).toString("hex");
-    const resetPasswordToken = crypto
-      .createHash("sha256")
-      .update(resetToken)
-      .digest("hex");
-    const resetPasswordExpires = new Date(Date.now() + 3600000);
+    const resetPasswordToken = crypto.createHash("sha256").update(resetToken).digest("hex");
+    const resetPasswordExpires = new Date(Date.now() + 3600000); // Token valid selama 1 jam
 
     user.resetPasswordToken = resetPasswordToken;
     user.resetPasswordExpires = resetPasswordExpires;
     await user.save();
 
     const resetLink = `http://localhost:5173/resetPassword/${resetToken}`;
+    console.log("Reset Password Link:", resetLink); // Debug reset link untuk memastikan
+
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: user.email,
@@ -271,13 +273,12 @@ exports.forgotPassword = async (req, res) => {
     };
 
     await transporter.sendMail(mailOptions);
-    console.log("Email reset password terkirim");
-    res
-      .status(200)
-      .json({ message: "Link reset password telah dikirim ke email Anda." });
+    console.log("Email reset password terkirim ke:", user.email);
+
+    res.status(200).json({ message: "Link reset password telah dikirim ke email Anda." });
   } catch (error) {
     console.error("Error saat lupa password:", error);
-    res.status(500).json({ message: "Gagal mengirim email reset password." });
+    res.status(500).json({ message: "Gagal mengirim email reset password.", error });
   }
 };
 
@@ -286,25 +287,35 @@ exports.resetPassword = async (req, res) => {
   const { token } = req.params;
   const { password } = req.body;
 
+  if (!password || password.length < 6) {
+    return res.status(400).json({
+      message: "Password harus memiliki minimal 6 karakter.",
+    });
+  }
+
   try {
-    const resetPasswordToken = crypto
-      .createHash("sha256")
-      .update(token)
-      .digest("hex");
+    const resetPasswordToken = crypto.createHash("sha256").update(token).digest("hex");
+    console.log("Token diterima:", token); // Debug token asli
+    console.log("Hashed Token untuk validasi:", resetPasswordToken); // Debug hashed token
+
     const user = await User.findOne({
       where: {
         resetPasswordToken,
-        resetPasswordExpires: { [Op.gt]: new Date() },
+        resetPasswordExpires: { [Op.gt]: new Date() }, // Token belum kadaluarsa
       },
     });
 
     if (!user) {
-      return res
-        .status(400)
-        .json({ message: "Token tidak valid atau sudah kadaluarsa." });
+      return res.status(400).json({
+        message: "Token tidak valid atau sudah kadaluarsa.",
+        errorDetail: "Token tidak ditemukan di database atau sudah kedaluwarsa.",
+      });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
+    console.log("Password sebelum hashing:", password); // Debug
+    console.log("Password setelah hashing:", hashedPassword); // Debug
+
     user.password = hashedPassword;
     user.resetPasswordToken = null;
     user.resetPasswordExpires = null;
@@ -313,7 +324,7 @@ exports.resetPassword = async (req, res) => {
     res.status(200).json({ message: "Password berhasil direset." });
   } catch (error) {
     console.error("Error saat reset password:", error);
-    res.status(500).json({ message: "Gagal mereset password." });
+    res.status(500).json({ message: "Gagal mereset password.", error });
   }
 };
 
@@ -327,18 +338,14 @@ exports.suspendUser = async (req, res) => {
     // Cek jika user adalah admin utama berdasarkan id atau email
     const mainAdminId = 1; // Ganti dengan ID atau atribut unik admin utama
     if (user.id === mainAdminId) {
-      return res
-        .status(403)
-        .json({ message: "Admin utama tidak bisa di-suspend." });
+      return res.status(403).json({ message: "Admin utama tidak bisa di-suspend." });
     }
 
     user.isSuspended = !user.isSuspended;
     await user.save();
 
     res.status(200).json({
-      message: `Pengguna ${
-        user.isSuspended ? "disuspend" : "diaktifkan kembali"
-      } dengan sukses.`,
+      message: `Pengguna ${user.isSuspended ? "disuspend" : "diaktifkan kembali"} dengan sukses.`,
       data: user,
     });
   } catch (error) {
@@ -346,3 +353,4 @@ exports.suspendUser = async (req, res) => {
     res.status(500).json({ message: "Gagal mengubah status suspend user" });
   }
 };
+

@@ -25,3 +25,28 @@ sequelize
   .catch((err) => console.error("Unable to connect to the database:", err));
 
 module.exports = sequelize;
+
+// const { Model, DataTypes } = require('sequelize');
+// const sequelize = require('../library/database');
+
+// class User extends Model {}
+
+// User.init({
+//   // definisi atribut model
+//   email: {
+//     type: DataTypes.STRING,
+//     allowNull: false,
+//     unique: true
+//   },
+//   password: {
+//     type: DataTypes.STRING,
+//     allowNull: false
+//   },
+//   // tambahkan atribut lainnya
+// }, {
+//   sequelize, // pass the connection instance
+//   modelName: 'User', // choose the model name
+//   // tambahkan opsi lain jika diperlukan
+// });
+
+// module.exports = User;

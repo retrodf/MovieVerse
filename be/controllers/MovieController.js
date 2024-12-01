@@ -56,18 +56,15 @@ class MovieController {
 
       // Menambahkan trailer ke MovieVideo
       if (trailers && Array.isArray(trailers) && trailers.length > 0) {
-        const limitedTrailers = trailers.slice(0, 5);
-
-        const trailerPromises = limitedTrailers.map((trailerUrl, index) =>
+        const trailerPromises = trailers.map((trailerUrl, index) =>
           MovieVideo.create({
             url: trailerUrl,
             title: `${title} Trailer ${index + 1}`,
             movieId: newMovie.id,
           })
         );
-
         await Promise.all(trailerPromises);
-      }
+      }      
 
       if (genres && genres.length > 0) {
         await newMovie.setGenres(genres.slice(0, 10)); // Membatasi jumlah genre
@@ -155,6 +152,11 @@ class MovieController {
             as: "Genres",
             through: { attributes: [] },
             attributes: ["id", "name"],
+          },
+          {
+            model: MovieVideo,
+            as: "MovieVideos",
+            attributes: ["id", "url", "title"], // Pastikan ini diambil
           },
         ],
       });
