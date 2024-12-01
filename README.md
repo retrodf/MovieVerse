@@ -1,0 +1,1 @@
+MovieVerse is a web application for watching movies, similar to IMDb and TMDb. This app allows users to search for movies, view detailed information, and watch trailers. MovieVerse is built using modern technologies such as React, Node.js, Express.js, and MySQL.
