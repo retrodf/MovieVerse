@@ -15,6 +15,7 @@ import { Link, useParams } from "react-router-dom";
 import { URL } from "../utils";
 import "../styles/MoviesPage.css";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const MovieDetailPage = () => {
   const { id } = useParams();
@@ -147,34 +148,45 @@ const MovieDetailPage = () => {
 
   const handleAddReview = async (e) => {
     e.preventDefault();
-    if (!username) return;
 
-    const parsedRating = parseFloat(newReview.rating);
-    if (isNaN(parsedRating) || parsedRating < 1 || parsedRating > 10) {
-      alert("Please enter a valid rating between 1 and 10.");
-      return;
-    }
+    if (!username) return; // Pastikan pengguna sudah login
 
     const reviewData = {
       content: newReview.content,
-      rating: parsedRating,
+      rating: newReview.rating,
       movieId: id,
       userId: localStorage.getItem("userId"),
     };
 
     if (!reviewData.userId) {
-      alert("User ID tidak ditemukan. Mohon login kembali.");
+      Swal.fire("Error", "User ID not found. Please log in again.", "error");
       return;
     }
 
     try {
-      const response = await axios.post(`${URL}/reviews/add`, reviewData);
-      console.log("Review added:", response.data);
-      fetchReviews(); // Panggil fetchReviews setelah submit agar data ulasan diambil ulang
-      setNewReview({ rating: 0, content: "" });
+      await axios.post(`${URL}/reviews/add`, reviewData);
+
+      // Notifikasi dengan SweetAlert
+      Swal.fire({
+        title: "Review Submitted",
+        text: "Your review has been submitted and will be reviewed by an admin.",
+        icon: "info",
+        confirmButtonText: "Okay",
+        customClass: {
+            confirmButton: "btn-swal", // Tambahkan kelas CSS kustom
+        },
+        buttonsStyling: false, // Matikan styling default dari SweetAlert
+    });    
+
+      fetchReviews(); // Refresh ulasan untuk menampilkan data terbaru
+      setNewReview({ rating: 0, content: "" }); // Reset form ulasan
     } catch (error) {
       console.error("Error adding review:", error);
-      alert("Failed to add review. Please try again later.");
+      Swal.fire(
+        "Error",
+        "Failed to add review. Please try again later.",
+        "error"
+      );
     }
   };
 
@@ -195,7 +207,7 @@ const MovieDetailPage = () => {
       </Container>
     );
   }
-
+  
   return (
     <div>
       {/* Header Section */}

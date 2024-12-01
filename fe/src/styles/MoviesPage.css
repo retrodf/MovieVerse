@@ -245,6 +245,20 @@
   background-color: #c82435; /* Warna merah lebih gelap untuk efek hover */
 }
 
+.btn-swal {
+  background-color: var(--secondary-color); /* Warna merah */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn-swal:hover {
+  background-color: #b02a37; /* Warna merah lebih gelap saat hover */
+}
+
 @media (max-width: 768px) {
   .custom-prev-icon {
     left: -40px; /* Kurangi jarak untuk layar kecil */
