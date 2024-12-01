@@ -180,11 +180,11 @@ const MovieDetailPage = () => {
 
   if (loading) {
     return (
-      <div className="text-center mt-5">
+      <div className="text-center mt-5" role="status" aria-live="polite">
         <Spinner animation="border" variant="primary" />
       </div>
     );
-  }
+  }  
 
   if (error) {
     return (
