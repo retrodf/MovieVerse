@@ -3,7 +3,10 @@
     "builds": [
       {
         "src": "fe/package.json",
-        "use": "@vercel/static-build"
+        "use": "@vercel/static-build",
+        "config": {
+          "distDir": "fe/dist"
+        }
       },
       {
         "src": "be/server.js",
@@ -19,6 +22,9 @@
         "src": "/(.*)",
         "dest": "/fe/$1"
       }
-    ]
+    ],
+    "env": {
+      "NPM_FLAGS": "--legacy-peer-deps"
+    }
   }
   
