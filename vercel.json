@@ -23,8 +23,6 @@
         "dest": "/fe/$1"
       }
     ],
-    "env": {
-      "NPM_FLAGS": "--legacy-peer-deps"
-    }
-}
+    "buildCommand": "npm run build"
+  }
   
