@@ -23,6 +23,7 @@
         "dest": "/fe/$1"
       }
     ],
-    "buildCommand": "npm run build"
+    "buildCommand": "npm run build",
+    "installCommand": "npm install"
   }
   
