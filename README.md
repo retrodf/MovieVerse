@@ -2,7 +2,6 @@
   <img height="150" src="https://raw.githubusercontent.com/retrodf/MovieVerse/main/fe/public/nm.png" />
 </div>
 
-###
 <div align="center">
 <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow.png" height="40" alt="bootstrap logo"  />
 <img src="https://img.shields.io/badge/Ant%20Design-0170FE?style=for-the-badge&logo=ant-design&logoColor=white" height="40" alt="ant-design" />
@@ -12,8 +11,6 @@
 <img src="https://skillicons.dev/icons?i=express" height="40" alt="express logo"  />
 </div>
 
-### 
-
 <div align="center">
   <img src="https://img.shields.io/github/contributors/retrodf/MovieVerse?color=red" alt="contributors" />
   <img src="https://img.shields.io/github/commit-activity/m/retrodf/MovieVerse?color=blue" alt="commit activity" />
@@ -21,8 +18,6 @@
   <br>
   <img src="https://img.shields.io/github/repo-size/retrodf/MovieVerse?color=green" alt="repo size" />
 </div>
-
-### 
 
 <h1>MovieVerse 🎬</h1>
 <p>MovieVerse is a web application that allows users to search, explore, and watch movies and TV series, similar <a href="https://www.themoviedb.org/">The Movie Database (TMDb)</a> or <a href="https://www.imdb.com/">IMDb</a>. Built with React, Vite, Node.js, Express.js, and MySQL, it provides a seamless browsing experience with features like detailed movie information, trailers, and user authentication. Whether you're searching by title, genre, or release year, MovieVerse offers an intuitive, responsive platform to discover your next favorite movie.</p>
@@ -71,18 +66,18 @@
   <img src="https://img.shields.io/badge/and%20many%20more-000000?style=for-the-badge" alt="and many more" />
 </div>
 
-<h1>Setup</h1>
+<h1>Setup 🚀</h1>
 
 1. Clone the repository and install the dependencies.
 
 ```bash
 git clone https://github.com/retrodf/MovieVerse.git
 ```
-2. Copy the `.env.example` file <b>inside server folder</b> and rename it to `.env`.
+2. Copy the `.env.example` file <b>inside be (backend) folder</b> and rename it to `.env`.
 
 3. Fill in the `.env` file inside <b>be (back end), fe (front end), and database</b> folder with your own configuration.
 
-<h1>Installation (Local)</h1>
+<h1>Installation (Local)  🖥️</h1>
 Ensure you have Node.js installed on your machine. If not, you can download it <a href="https://nodejs.org/en/download/">here</a>.
 
 1. Create a database named 'movieverse'
@@ -105,14 +100,23 @@ npm install
 npm run dec
 ```
 
-<h1>Installation (Docker)</h1>
+<h1>Installation (Docker) 🐳</h1>
 Ensure you have Docker installed on your machine. If not, you can download it <a href="https://www.docker.com/products/docker-desktop">here</a>.
 
 <h1>Screenshots 📸</h1>
 Here are some screenshots of the MovieVerse app:
 
+<div align="center">
+  <img src="https://github.com/retrodf/MovieVerse/blob/main/fe/public/sc%201.png?raw=true" width="100%" alt="screenshot-1" />
+</div>
 
-<h1>Licence</h1>
+<div align="center">
+  <img src="https://github.com/retrodf/MovieVerse/blob/main/fe/public/sc%202.png?raw=true" width="30%" alt="screenshot-2" style="margin: 5px" />
+  <img src="https://github.com/retrodf/MovieVerse/blob/main/fe/public/sc%203.png?raw=true" width="30%" alt="screenshot-3" style="margin: 5px" />
+  <img src="https://github.com/retrodf/MovieVerse/blob/main/fe/public/sc%204.png?raw=true" width="30%" alt="screenshot-4" style="margin: 5px" />
+</div>
+
+<h1>Licence 📜</h1>
 <p>The MovieVerse project is licensed under the MIT License. See the <a href="https://opensource.org/license/MIT">MIT License</a> for more information.</p>
 
 
