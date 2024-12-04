@@ -15,8 +15,6 @@ import CMSCountriesPage from "../admin/pages/CMSCountriesPage";
 import CMSCelebsPage from "../admin/pages/CMSCelebsPage";
 import CMSDirectorsPage from "../admin/pages/CMSDirectorsPage";
 import CMSCommentsPage from "../admin/pages/CMSCommentsPage";
-import CMSInputNewMoviesPage from "../admin/pages/CMSInputNewMoviesPage";
-import CMSInputNewSeriesPage from "../admin/pages/CMSSeriesNewInputPage";
 
 console.log("Sider rendered");
 
