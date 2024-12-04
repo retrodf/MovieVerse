@@ -10,23 +10,14 @@ const NavbarComponent = () => {
   const navigate = useNavigate();
 
   // Cek apakah token JWT ada di localStorage
-  // useEffect(() => {
-  //   const token = localStorage.getItem("token");
-  //   if (token) {
-  //     setIsAuth(true);
-  //   } else {
-  //     setIsAuth(false);
-  //   }
-  // }, []);
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      setIsAuth(true); // Jika token ada, set isAuth ke true
+      setIsAuth(true);
     } else {
-      setIsAuth(false); // Jika tidak ada token, set isAuth ke false
+      setIsAuth(false);
     }
   }, []);
-  
 
   // Fungsi untuk logout
   const handleLogout = () => {

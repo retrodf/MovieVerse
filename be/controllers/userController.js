@@ -231,7 +231,7 @@ exports.login = async (req, res) => {
       userId: user.id,
       username: user.username,
       role: user.role,
-    });
+    });    
   } catch (err) {
     console.error("Error saat login:", err);
     res.status(500).json({ message: "Gagal login" });

@@ -65,7 +65,7 @@ User.init(
     },
     googleId: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       unique: true,
     },    
   },

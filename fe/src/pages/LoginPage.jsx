@@ -17,32 +17,46 @@ const LoginPage = ({ setIsAuth }) => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const urlParams = new URLSearchParams(window.location.search);
-  //   console.log("Query Params from URL:", window.location.search); // Debug query params
-  //   const token = urlParams.get("token");
-  //   if (token) {
-  //     console.log("Token received from Google Login:", token); // Debug token
-  //     localStorage.setItem("token", token);
-  //     setIsAuth(true);
-  //     navigate("/home");
-  //   } else {
-  //     console.error("No token received from Google login");
-  //   }
-  // }, [navigate, setIsAuth]);   
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
-    const token = urlParams.get('token'); // Ambil token dari URL
+    const token = urlParams.get("token");
+    const errorParam = urlParams.get("error");
+  
+    // Log all URL parameters for debugging
+    console.log('URL Parameters:', Object.fromEntries(urlParams));
+  
+    if (errorParam) {
+      // Handle specific errors from backend
+      switch(errorParam) {
+        case 'authentication_failed':
+          setError({ general: 'Google authentication failed. Please try again.' });
+          break;
+        case 'server_error':
+          setError({ general: 'A server error occurred during login.' });
+          break;
+        default:
+          setError({ general: 'An unknown error occurred during login.' });
+      }
+    }
   
     if (token) {
-      console.log('Token received from Google login:', token); // Debug token yang diterima
-      localStorage.setItem('token', token); // Simpan token di localStorage
-      setIsAuth(true); // Tandai user telah login
-      navigate("/home"); // Redirect ke halaman utama setelah login
+      console.log("Token received:", token);
+      try {
+        // Optional: Decode token to verify its contents
+        const decodedToken = JSON.parse(atob(token.split('.')[1]));
+        console.log('Decoded Token:', decodedToken);
+  
+        localStorage.setItem("token", token);
+        setIsAuth(true);
+        navigate("/home");
+      } catch (error) {
+        console.error("Error processing token:", error);
+        setError({ general: 'Invalid token received. Please try logging in again.' });
+      }
     } else {
-      console.error('No token received from Google login');
+      console.warn("No token received from Google login");
     }
-  }, [navigate, setIsAuth]);  
+  }, [navigate, setIsAuth]);
 
   // Lazy load untuk gambar
   useEffect(() => {
@@ -52,7 +66,9 @@ const LoginPage = ({ setIsAuth }) => {
   }, []);
 
   const isValidPassword = (password) =>
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{6,}$/.test(password);
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{6,}$/.test(
+      password
+    );
 
   const validateField = (field, value) => {
     if (!value) {
@@ -93,6 +109,7 @@ const LoginPage = ({ setIsAuth }) => {
 
       // Save authentication data to localStorage
       localStorage.setItem("token", response.data.token);
+      localStorage.setItem("userId", response.data.userId); // Menyimpan userId
       localStorage.setItem("username", response.data.username);
       localStorage.setItem("role", response.data.role);
 
@@ -121,7 +138,10 @@ const LoginPage = ({ setIsAuth }) => {
   const renderTooltip = (message) => (
     <Popover id="popover-basic" className="custom-popover">
       <Popover.Body>
-        <i className="bi bi-exclamation-circle-fill me-2" style={{ color: "#dc3545" }}></i>
+        <i
+          className="bi bi-exclamation-circle-fill me-2"
+          style={{ color: "#dc3545" }}
+        ></i>
         {message}
       </Popover.Body>
     </Popover>
@@ -132,6 +152,7 @@ const LoginPage = ({ setIsAuth }) => {
   };
 
   const handleGoogleLogin = () => {
+    console.log('Initiating Google Login');
     window.location.href = "http://localhost:3000/api/admin/user/auth/google";
   };  
 
@@ -175,15 +196,23 @@ const LoginPage = ({ setIsAuth }) => {
                 overlay={error[field] ? renderTooltip(error[field]) : <></>}
                 show={!!error[field]}
               >
-                <div className={`input-box ${error[field] ? "input-error" : ""}`}>
+                <div
+                  className={`input-box ${error[field] ? "input-error" : ""}`}
+                >
                   <input
                     type={
-                      field === "password" ? (showPassword ? "text" : "password") : "text"
+                      field === "password"
+                        ? showPassword
+                          ? "text"
+                          : "password"
+                        : "text"
                     }
                     placeholder={`Enter your ${field}`}
                     value={field === "email" ? email : password}
                     onChange={(e) =>
-                      field === "email" ? setEmail(e.target.value) : setPassword(e.target.value)
+                      field === "email"
+                        ? setEmail(e.target.value)
+                        : setPassword(e.target.value)
                     }
                     onBlur={(e) => handleBlur(field, e.target.value)}
                     required
@@ -196,8 +225,12 @@ const LoginPage = ({ setIsAuth }) => {
                           : "bi-eye"
                         : "bi-envelope"
                     } icon`}
-                    onClick={field === "password" ? togglePasswordVisibility : null}
-                    style={{ cursor: field === "password" ? "pointer" : "default" }}
+                    onClick={
+                      field === "password" ? togglePasswordVisibility : null
+                    }
+                    style={{
+                      cursor: field === "password" ? "pointer" : "default",
+                    }}
                   ></i>
                 </div>
               </OverlayTrigger>
