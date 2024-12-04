@@ -8,7 +8,7 @@ const sequelize = new Sequelize(
   {
     host: process.env.DB_HOST,
     dialect: "mysql",
-    port: process.env.DB_PORT || 8111,
+    port: process.env.DB_PORT || 3306,
     pool: {
       max: 5,
       min: 0,
