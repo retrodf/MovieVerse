@@ -10,10 +10,7 @@
       },
       {
         "src": "be/server.js",
-        "use": "@vercel/node",
-        "config": {
-          "maxDuration": 10
-        }
+        "use": "@vercel/node"
       }
     ],
     "routes": [
@@ -25,7 +22,6 @@
         "src": "/(.*)",
         "dest": "/fe/$1"
       }
-    ],
-    "buildCommand": "npm install && npm run build"
+    ]
   }
   
