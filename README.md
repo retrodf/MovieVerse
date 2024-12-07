@@ -90,14 +90,17 @@ Ensure you have Node.js installed on your machine. If not, you can download it <
 ```bash
 cd be
 npm install
-npm run start
+```
+Execute the following command to start the backend server in development mode:
+```bash
+npm run start:dev
 ```
 
 <b>Step 3 : Set up the frontend:</b>
 ```bash
 cd fe
 npm install
-npm run dec
+npm run dev
 ```
 
 <h1>Installation (Docker) 🐳</h1>

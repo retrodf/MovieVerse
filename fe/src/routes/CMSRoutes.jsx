@@ -10,13 +10,10 @@ import ToggleThemeButton from "../admin/components/ToggleThemeButton";
 import CMSUserPage from "../admin/pages/CMSUserPage";
 import CMSGenresPage from "../admin/pages/CMSGenresPage";
 import CMSMoviesValPage from "../admin/pages/CMSMoviesValPage";
-import CMSSeriesValPage from "../admin/pages/CMSSeriesValPage";
 import CMSCountriesPage from "../admin/pages/CMSCountriesPage";
 import CMSCelebsPage from "../admin/pages/CMSCelebsPage";
 import CMSDirectorsPage from "../admin/pages/CMSDirectorsPage";
 import CMSCommentsPage from "../admin/pages/CMSCommentsPage";
-import CMSInputNewMoviesPage from "../admin/pages/CMSInputNewMoviesPage";
-import CMSInputNewSeriesPage from "../admin/pages/CMSSeriesNewInputPage";
 
 console.log("Sider rendered");
 
