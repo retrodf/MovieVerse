@@ -47,16 +47,6 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
-app.use(
-  cors({
-    origin: 'http://localhost:5173', // URL frontend
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true, // Agar bisa menangani cookie atau header Authorization
-  })
-);
-
-
 
 app.options('*', cors()); // Handle preflight requests
 

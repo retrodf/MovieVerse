@@ -8,7 +8,7 @@ const sequelize = new Sequelize(
   {
     host: process.env.DB_HOST,
     dialect: "mysql",
-    port: process.env.DB_PORT || 8111,
+    port: process.env.DB_PORT || 3306,
     pool: {
       max: 5,
       min: 0,
@@ -19,34 +19,22 @@ const sequelize = new Sequelize(
   }
 );
 
-sequelize
-  .authenticate()
-  .then(() => console.log("Database connected successfully"))
-  .catch((err) => console.error("Unable to connect to the database:", err));
+const connectWithRetry = async () => {
+  let retries = 10;
+  while (retries) {
+    try {
+      await sequelize.authenticate();
+      console.log("Database connected successfully");
+      break;
+    } catch (err) {
+      console.error("Unable to connect to the database:", err.message);
+      retries -= 1;
+      console.log(`Retries left: ${retries}`);
+      await new Promise((res) => setTimeout(res, 5000));
+    }
+  }
+};
+
+connectWithRetry();
 
 module.exports = sequelize;
-
-// const { Model, DataTypes } = require('sequelize');
-// const sequelize = require('../library/database');
-
-// class User extends Model {}
-
-// User.init({
-//   // definisi atribut model
-//   email: {
-//     type: DataTypes.STRING,
-//     allowNull: false,
-//     unique: true
-//   },
-//   password: {
-//     type: DataTypes.STRING,
-//     allowNull: false
-//   },
-//   // tambahkan atribut lainnya
-// }, {
-//   sequelize, // pass the connection instance
-//   modelName: 'User', // choose the model name
-//   // tambahkan opsi lain jika diperlukan
-// });
-
-// module.exports = User;

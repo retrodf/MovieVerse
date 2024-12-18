@@ -44,8 +44,8 @@ Movie.init(
       allowNull: false,
     },
     release_date: {
-      type: Sequelize.DATEONLY,
-      defaultValue: Sequelize.literal("CURRENT_DATE"),
+      type: Sequelize.DATE,
+      defaultValue: Sequelize.NOW,
       allowNull: false,
     },
     synopsis: {
@@ -66,9 +66,9 @@ Movie.init(
     },
   },
   {
-    sequelize,
+    sequelize,  
     modelName: "Movie",
-    tableName: "Movie",
+    tableName: "movie",
     timestamps: false,
   }
 );

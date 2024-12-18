@@ -1,12 +1,14 @@
 {
   "name": "be",
+  "be": "file:",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "test": "jest",
     "start": "node server.js",
     "start:dev": "nodemon server.js",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "test": "jest",
+    "build:docker": "docker build -f Dockerfile -t express-app ."
   },
   "author": "",
   "license": "ISC",
@@ -14,9 +16,10 @@
   "dependencies": {
     "antd": "^5.22.2",
     "axios": "^1.7.7",
-    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
     "be": "file:",
     "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
     "dotenv-safe": "^9.1.0",
     "express": "^4.21.0",
     "express-session": "^1.18.1",

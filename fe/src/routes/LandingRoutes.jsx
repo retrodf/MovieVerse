@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import HomePage from "../pages/Homepage";
+import HomePage from "../pages/HomePage";
 import CelebsPage from "../pages/CelebsPage";
 import MoviesPage from "../pages/MoviesPage";
 import LoginPage from "../pages/LoginPage";
@@ -8,6 +8,7 @@ import SearchPage from "../pages/SearchPage";
 import ForgotPasswordPage from "../pages/ForgotPasswordPage";
 import ResetPasswordPage from "../pages/ResetPasswordPage"; 
 import AddMoviePage from "../pages/AddMovie";
+import PropTypes from 'prop-types';
 // import Profile from "../pages/Profile";
 import MovieDetail from "../components/MovieDetail";
 import CelebsDetail from "../components/CelebsDetail";
@@ -31,5 +32,9 @@ function LandingRoutes({ setIsAuth }) {
     </Routes>
   );
 }
+
+LandingRoutes.propTypes = {
+  setIsAuth: PropTypes.func.isRequired,
+};
 
 export default LandingRoutes;
